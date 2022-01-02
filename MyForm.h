@@ -34,6 +34,8 @@ namespace FoolGame {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Button^ play_button;
+	protected:
 
 	private:
 		/// <summary>
@@ -48,18 +50,34 @@ namespace FoolGame {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->play_button = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
+			// 
+			// button1
+			// 
+			this->play_button->Location = System::Drawing::Point(22, 21);
+			this->play_button->Name = L"PlayGame";
+			this->play_button->Size = System::Drawing::Size(95, 30);
+			this->play_button->TabIndex = 0;
+			this->play_button->Text = L"PlayGame";
+			this->play_button->UseVisualStyleBackColor = true;
+			this->play_button->Click += gcnew System::EventHandler(this, &MyForm::Play_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(854, 466);
-			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Controls->Add(this->play_button);
+			this->Name = L"Fool_game";
+			this->Text = L"Fool_game";
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+	private: System::Void Play_Click(System::Object^ sender, System::EventArgs^ e) {
+
+
+	}
 	};
 }
