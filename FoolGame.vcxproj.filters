@@ -24,4 +24,18 @@
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="A_che.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="A_kre.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="A_bu.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="A_pi.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
