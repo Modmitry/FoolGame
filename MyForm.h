@@ -53,10 +53,10 @@ namespace FoolGame {
 			this->play_button = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// button1
+			// play_button
 			// 
 			this->play_button->Location = System::Drawing::Point(22, 21);
-			this->play_button->Name = L"PlayGame";
+			this->play_button->Name = L"play_button";
 			this->play_button->Size = System::Drawing::Size(95, 30);
 			this->play_button->TabIndex = 0;
 			this->play_button->Text = L"PlayGame";
@@ -69,7 +69,7 @@ namespace FoolGame {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(854, 466);
 			this->Controls->Add(this->play_button);
-			this->Name = L"Fool_game";
+			this->Name = L"MyForm";
 			this->Text = L"Fool_game";
 			this->ResumeLayout(false);
 
