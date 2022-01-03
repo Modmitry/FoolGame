@@ -35,7 +35,18 @@ namespace FoolGame {
 			}
 		}
 	private: System::Windows::Forms::Button^ play_button;
-	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::PictureBox^ battleground_1;
+	private: System::Windows::Forms::PictureBox^ battleground_2;
+	private: System::Windows::Forms::PictureBox^ battleground_3;
+	private: System::Windows::Forms::PictureBox^ battleground_4;
+	private: System::Windows::Forms::PictureBox^ battleground_5;
+	private: System::Windows::Forms::PictureBox^ battleground_6;
+	private: System::Windows::Forms::PictureBox^ battleground_7;
+	private: System::Windows::Forms::PictureBox^ battleground_8;
+	private: System::Windows::Forms::PictureBox^ battleground_9;
+	private: System::Windows::Forms::PictureBox^ battleground_10;
+	private: System::Windows::Forms::PictureBox^ battleground_11;
+	private: System::Windows::Forms::PictureBox^ battleground_12;
 	protected:
 
 	private:
@@ -54,7 +65,6 @@ namespace FoolGame {
 #pragma endregion
 
 	private: System::Void Play_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e);
 	
 
 
