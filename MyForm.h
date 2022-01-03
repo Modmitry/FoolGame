@@ -35,6 +35,7 @@ namespace FoolGame {
 			}
 		}
 	private: System::Windows::Forms::Button^ play_button;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	protected:
 
 	private:
@@ -48,36 +49,14 @@ namespace FoolGame {
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
-		void InitializeComponent(void)
-		{
-			this->play_button = (gcnew System::Windows::Forms::Button());
-			this->SuspendLayout();
-			// 
-			// play_button
-			// 
-			this->play_button->Location = System::Drawing::Point(22, 21);
-			this->play_button->Name = L"play_button";
-			this->play_button->Size = System::Drawing::Size(95, 30);
-			this->play_button->TabIndex = 0;
-			this->play_button->Text = L"PlayGame";
-			this->play_button->UseVisualStyleBackColor = true;
-			this->play_button->Click += gcnew System::EventHandler(this, &MyForm::Play_Click);
-			// 
-			// MyForm
-			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(854, 466);
-			this->Controls->Add(this->play_button);
-			this->Name = L"MyForm";
-			this->Text = L"Fool_game";
-			this->ResumeLayout(false);
-
-		}
+		void InitializeComponent(void);
+		
 #pragma endregion
-	private: System::Void Play_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	private: System::Void Play_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e);
+	
 
 
-	}
 	};
 }

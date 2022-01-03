@@ -25,16 +25,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="A_bub.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
     <Image Include="A_che.PNG">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="A_kre.PNG">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="A_bu.PNG">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="A_pi.PNG">
+    <Image Include="A_pik.PNG">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
