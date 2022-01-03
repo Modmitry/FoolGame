@@ -459,7 +459,13 @@ void FoolGame::MyForm::InitializeComponent(void)
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Play_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	/*pictureBox1->Image = Image::FromFile("cards_images/Card_back.PNG");*/
+	// 1- cards for computer
+	Computer_player_cards->Image = Image::FromFile("cards_images/Card_back.PNG");
+
+
+	Cards_in_the_desk->Image = Image::FromFile("cards_images/Card_back.PNG");
+	Cards_in_the_desk->Image->RotateFlip(RotateFlipType::Rotate90FlipX);
+
 }
 //-----------------------------------------------------------------------------------------
 //System::Void FoolGame::MyForm::pictureBox1_Click(System::Object^ sender, System::EventArgs^ e)
