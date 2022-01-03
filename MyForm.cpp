@@ -47,6 +47,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_18 = (gcnew System::Windows::Forms::PictureBox());
 	this->Player_card_19 = (gcnew System::Windows::Forms::PictureBox());
 	this->Player_card_20 = (gcnew System::Windows::Forms::PictureBox());
+	this->button1 = (gcnew System::Windows::Forms::Button());
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_1))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_2))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_3))->BeginInit();
@@ -70,7 +71,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_6))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_7))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_8))->BeginInit();
-	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_9))->BeginInit();	
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_9))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_10))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_11))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_12))->BeginInit();
@@ -374,12 +375,23 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_20->TabIndex = 36;
 	this->Player_card_20->TabStop = false;
 	// 
+	// button1
+	// 
+	this->button1->Location = System::Drawing::Point(266, 27);
+	this->button1->Name = L"button1";
+	this->button1->Size = System::Drawing::Size(147, 50);
+	this->button1->TabIndex = 37;
+	this->button1->Text = L"button1";
+	this->button1->UseVisualStyleBackColor = true;
+	this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+	// 
 	// MyForm
 	// 
 	this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 	this->BackColor = System::Drawing::SystemColors::ScrollBar;
 	this->ClientSize = System::Drawing::Size(1298, 760);
+	this->Controls->Add(this->button1);
 	this->Controls->Add(this->Player_card_20);
 	this->Controls->Add(this->Player_card_19);
 	this->Controls->Add(this->Player_card_18);
@@ -390,7 +402,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Controls->Add(this->Player_card_13);
 	this->Controls->Add(this->Player_card_12);
 	this->Controls->Add(this->Player_card_11);
-	this->Controls->Add(this->Player_card_10);	
+	this->Controls->Add(this->Player_card_10);
 	this->Controls->Add(this->Player_card_9);
 	this->Controls->Add(this->Player_card_8);
 	this->Controls->Add(this->Player_card_7);
@@ -441,7 +453,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_6))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_7))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_8))->EndInit();
-	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_9))->EndInit();	
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_9))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_10))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_11))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_12))->EndInit();
@@ -460,12 +472,320 @@ void FoolGame::MyForm::InitializeComponent(void)
 System::Void FoolGame::MyForm::Play_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	// 1- cards for computer
-	Computer_player_cards->Image = Image::FromFile("cards_images/Card_back.PNG");
+	//Computer_player_cards->Image = Image::FromFile("cards_images/Card_back.PNG");
+
+	random_distribution_of_cards();
+
+}
+//-----------------------------------------------------------------------------------------
+void FoolGame::MyForm::random_distribution_of_cards()
+{
+	if (cards.size() > 0)
+		return;
+
+	std::vector<std::pair<card_suit, int>> all_cards{
+	{card_suit::hearts,1},
+	{card_suit::hearts,2},
+	{card_suit::hearts,3},
+	{card_suit::hearts,4},
+	{card_suit::hearts,5},
+	{card_suit::hearts,6},
+	{card_suit::hearts,7},
+	{card_suit::hearts,8},
+	{card_suit::hearts,9},
+	{card_suit::clubs,1},
+	{card_suit::clubs,2},
+	{card_suit::clubs,3},
+	{card_suit::clubs,4},
+	{card_suit::clubs,5},
+	{card_suit::clubs,6},
+	{card_suit::clubs,7},
+	{card_suit::clubs,8},
+	{card_suit::clubs,9},
+	{card_suit::diamonds,1},
+	{card_suit::diamonds,2},
+	{card_suit::diamonds,3},
+	{card_suit::diamonds,4},
+	{card_suit::diamonds,5},
+	{card_suit::diamonds,6},
+	{card_suit::diamonds,7},
+	{card_suit::diamonds,8},
+	{card_suit::diamonds,9},
+	{card_suit::spades,1},
+	{card_suit::spades,2},
+	{card_suit::spades,3},
+	{card_suit::spades,4},
+	{card_suit::spades,5},
+	{card_suit::spades,6},
+	{card_suit::spades,7},
+	{card_suit::spades,8},
+	{card_suit::spades,9}
+	};
+
+	// мб переделать!
+	for (int i = 35; i >= 0; i--)
+	{
+		int rand_index = get_random_int(0, i);
+		cards.push(all_cards[rand_index]);
+
+		// first card is a Trupm_card
+		if (i == 35)
+		{
+			String^ way_to_card;
+			if (load_card(all_cards[rand_index], way_to_card))
+			{
+				Trupm_card->Image = Image::FromFile(way_to_card);
+			}
+		}
+		all_cards.erase(all_cards.begin()+rand_index);
+	}
 
 
 	Cards_in_the_desk->Image = Image::FromFile("cards_images/Card_back.PNG");
 	Cards_in_the_desk->Image->RotateFlip(RotateFlipType::Rotate90FlipX);
+}
+//-----------------------------------------------------------------------------------------
+bool FoolGame::MyForm::get_card(std::pair<card_suit, int>& card)
+{
+	if (cards.empty())
+		return false;
 
+	card = cards.top();
+	// erase top element
+	cards.pop();
+
+	if (cards.empty())
+	{
+		if (Cards_in_the_desk->Image)
+			Cards_in_the_desk->Image = nullptr;
+
+		Trupm_card->Image = nullptr;
+
+		switch (card.first)
+		{
+		case card_suit::hearts:
+			Trupm_card->Image= Image::FromFile("cards_images/Badge_hearts.PNG");
+		case card_suit::clubs:
+			Trupm_card->Image = Image::FromFile("cards_images/Badge_clubs.PNG");
+		case card_suit::diamonds:
+			Trupm_card->Image = Image::FromFile("cards_images/Badge_diamonds.PNG");
+		case card_suit::spades:
+			Trupm_card->Image = Image::FromFile("cards_images/Badge_spades.PNG");
+		}
+		
+	}
+
+	if (cards.size() == 1)
+	{
+		Cards_in_the_desk->Image = nullptr;
+	}
+
+	return true;
+}
+//-----------------------------------------------------------------------------------------
+int FoolGame::MyForm::get_random_int(const int& left_bound, const int& right_bound)
+{
+	if (left_bound == right_bound)
+		return left_bound;
+
+	srand(time(NULL));
+	return rand() % ((right_bound + 1) - left_bound) + left_bound;
+}
+//-----------------------------------------------------------------------------------------
+bool FoolGame::MyForm::load_card(const std::pair<card_suit, int>& card, String^% way)
+{
+	// 6
+	if ((card.first == card_suit::hearts) && (card.second == 1))
+	{
+		way = "cards_images/6_hearts.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::clubs) && (card.second == 1))
+	{
+		way = "cards_images/6_clubs.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::diamonds) && (card.second == 1))
+	{
+		way = "cards_images/6_diamonds.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::spades) && (card.second == 1))
+	{
+		way = "cards_images/6_spades.PNG";
+		return true;
+	}
+	// 7
+	if ((card.first == card_suit::hearts) && (card.second == 2))
+	{
+		way = "cards_images/7_hearts.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::clubs) && (card.second == 2))
+	{
+		way = "cards_images/7_clubs.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::diamonds) && (card.second == 2))
+	{
+		way = "cards_images/7_diamonds.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::spades) && (card.second == 2))
+	{
+		way = "cards_images/7_spades.PNG";
+		return true;
+	}
+	// 8
+	if ((card.first == card_suit::hearts) && (card.second == 3))
+	{
+		way = "cards_images/8_hearts.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::clubs) && (card.second == 3))
+	{
+		way = "cards_images/8_clubs.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::diamonds) && (card.second == 3))
+	{
+		way = "cards_images/8_diamonds.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::spades) && (card.second == 3))
+	{
+		way = "cards_images/8_spades.PNG";
+		return true;
+	}
+	// 9
+	if ((card.first == card_suit::hearts) && (card.second == 4))
+	{
+		way = "cards_images/9_hearts.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::clubs) && (card.second == 4))
+	{
+		way = "cards_images/9_clubs.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::diamonds) && (card.second == 4))
+	{
+		way = "cards_images/9_diamonds.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::spades) && (card.second == 4))
+	{
+		way = "cards_images/9_spades.PNG";
+		return true;
+	}
+	// 10
+	if ((card.first == card_suit::hearts) && (card.second == 5))
+	{
+		way = "cards_images/10_hearts.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::clubs) && (card.second == 5))
+	{
+		way = "cards_images/10_clubs.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::diamonds) && (card.second == 5))
+	{
+		way = "cards_images/10_diamonds.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::spades) && (card.second == 5))
+	{
+		way = "cards_images/10_spades.PNG";
+		return true;
+	}
+	// J
+	if ((card.first == card_suit::hearts) && (card.second == 6))
+	{
+		way = "cards_images/J_hearts.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::clubs) && (card.second == 6))
+	{
+		way = "cards_images/J_clubs.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::diamonds) && (card.second == 6))
+	{
+		way = "cards_images/J_diamonds.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::spades) && (card.second == 6))
+	{
+		way = "cards_images/J_spades.PNG";
+		return true;
+	}
+	// Q
+	if ((card.first == card_suit::hearts) && (card.second == 7))
+	{
+		way = "cards_images/Q_hearts.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::clubs) && (card.second == 7))
+	{
+		way = "cards_images/Q_clubs.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::diamonds) && (card.second == 7))
+	{
+		way = "cards_images/Q_diamonds.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::spades) && (card.second == 7))
+	{
+		way = "cards_images/Q_spades.PNG";
+		return true;
+	}
+	// K
+	if ((card.first == card_suit::hearts) && (card.second == 8))
+	{
+		way = "cards_images/K_hearts.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::clubs) && (card.second == 8))
+	{
+		way = "cards_images/K_clubs.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::diamonds) && (card.second == 8))
+	{
+		way = "cards_images/K_diamonds.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::spades) && (card.second == 8))
+	{
+		way = "cards_images/K_spades.PNG";
+		return true;
+	}
+	// A
+	if ((card.first == card_suit::hearts) && (card.second == 9))
+	{
+		way = "cards_images/A_hearts.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::clubs) && (card.second == 9))
+	{
+		way = "cards_images/A_clubs.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::diamonds) && (card.second == 9))
+	{
+		way = "cards_images/A_diamonds.PNG";
+		return true;
+	}
+	if ((card.first == card_suit::spades) && (card.second == 9))
+	{
+		way = "cards_images/A_spades.PNG";
+		return true;
+	}
+
+	// if not found
+	return false;
 }
 //-----------------------------------------------------------------------------------------
 //System::Void FoolGame::MyForm::pictureBox1_Click(System::Object^ sender, System::EventArgs^ e)

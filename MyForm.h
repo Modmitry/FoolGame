@@ -1,4 +1,24 @@
 #pragma once
+#include <vector>
+#include <string>
+#include <stack>
+#include <time.h>
+
+
+// members for card deck
+enum class card_suit
+{
+	hearts,
+	clubs,
+	diamonds,
+	spades
+};
+
+std::stack<std::pair<card_suit,int>> cards;
+card_suit trump_suit;
+//--//
+
+
 
 namespace FoolGame {
 
@@ -9,9 +29,7 @@ namespace FoolGame {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
 	/// Summary for MyForm
-	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
@@ -24,9 +42,7 @@ namespace FoolGame {
 		}
 
 	protected:
-		/// <summary>
 		/// Clean up any resources being used.
-		/// </summary>
 		~MyForm()
 		{
 			if (components)
@@ -34,6 +50,7 @@ namespace FoolGame {
 				delete components;
 			}
 		}
+	// fields for cards
 	private: System::Windows::Forms::Button^ play_button;
 	private: System::Windows::Forms::PictureBox^ battleground_1;
 	private: System::Windows::Forms::PictureBox^ battleground_2;
@@ -70,26 +87,37 @@ namespace FoolGame {
 	private: System::Windows::Forms::PictureBox^ Player_card_18;
 	private: System::Windows::Forms::PictureBox^ Player_card_19;
 	private: System::Windows::Forms::PictureBox^ Player_card_20;
-	protected:
+	private: System::Windows::Forms::Button^ button1;
 
 	private:
-		/// <summary>
 		/// Required designer variable.
-		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
-		/// <summary>
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
-		/// </summary>
 		void InitializeComponent(void);
 		
 #pragma endregion
 
 	private: System::Void Play_Click(System::Object^ sender, System::EventArgs^ e);
-	
+
+	// methods for card deck
+	public: 
+
+	void random_distribution_of_cards();	
+	bool get_card(std::pair<card_suit, int>& card);
+	int get_random_int(const int& left_bound, const int& right_bound);
+	bool load_card(const std::pair<card_suit, int>& card, String^% way);
+	//
 
 
+
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		std::pair<card_suit, int> card1;
+		get_card(card1);
+		int a12 = 5;
+	}
 	};
 }
