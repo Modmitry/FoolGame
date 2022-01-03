@@ -47,6 +47,29 @@ namespace FoolGame {
 	private: System::Windows::Forms::PictureBox^ battleground_10;
 	private: System::Windows::Forms::PictureBox^ battleground_11;
 	private: System::Windows::Forms::PictureBox^ battleground_12;
+	private: System::Windows::Forms::PictureBox^ Computer_player_cards;
+	private: System::Windows::Forms::PictureBox^ Trupm_card;
+	private: System::Windows::Forms::PictureBox^ Cards_in_the_desk;
+	private: System::Windows::Forms::PictureBox^ Player_card_1;
+	private: System::Windows::Forms::PictureBox^ Player_card_2;
+	private: System::Windows::Forms::PictureBox^ Player_card_3;
+	private: System::Windows::Forms::PictureBox^ Player_card_4;
+	private: System::Windows::Forms::PictureBox^ Player_card_5;
+	private: System::Windows::Forms::PictureBox^ Player_card_6;
+	private: System::Windows::Forms::PictureBox^ Player_card_7;
+	private: System::Windows::Forms::PictureBox^ Player_card_8;
+	private: System::Windows::Forms::PictureBox^ Player_card_9;	
+	private: System::Windows::Forms::PictureBox^ Player_card_10;
+	private: System::Windows::Forms::PictureBox^ Player_card_11;
+	private: System::Windows::Forms::PictureBox^ Player_card_12;
+	private: System::Windows::Forms::PictureBox^ Player_card_13;
+	private: System::Windows::Forms::PictureBox^ Player_card_14;
+	private: System::Windows::Forms::PictureBox^ Player_card_15;
+	private: System::Windows::Forms::PictureBox^ Player_card_16;
+	private: System::Windows::Forms::PictureBox^ Player_card_17;
+	private: System::Windows::Forms::PictureBox^ Player_card_18;
+	private: System::Windows::Forms::PictureBox^ Player_card_19;
+	private: System::Windows::Forms::PictureBox^ Player_card_20;
 	protected:
 
 	private:
