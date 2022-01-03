@@ -52,7 +52,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Play_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	pictureBox1->Image = Image::FromFile("A_pik.PNG");
+	pictureBox1->Image = Image::FromFile("cards_images/Card_back.PNG");
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::pictureBox1_Click(System::Object^ sender, System::EventArgs^ e)

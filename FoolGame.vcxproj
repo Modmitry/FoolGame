@@ -131,10 +131,47 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="A_bub.PNG" />
-    <Image Include="A_che.PNG" />
-    <Image Include="A_kre.PNG" />
-    <Image Include="A_pik.PNG" />
+    <Image Include="cards_images\10_clubs.PNG" />
+    <Image Include="cards_images\10_diamonds.PNG" />
+    <Image Include="cards_images\10_hearts.PNG" />
+    <Image Include="cards_images\10_spades.PNG" />
+    <Image Include="cards_images\6_clubs.PNG" />
+    <Image Include="cards_images\6_diamonds.PNG" />
+    <Image Include="cards_images\6_hearts.PNG" />
+    <Image Include="cards_images\6_spades.PNG" />
+    <Image Include="cards_images\7_clubs.PNG" />
+    <Image Include="cards_images\7_diamonds.PNG" />
+    <Image Include="cards_images\7_hearts.PNG" />
+    <Image Include="cards_images\7_spades.PNG" />
+    <Image Include="cards_images\8_clubs.PNG" />
+    <Image Include="cards_images\8_diamonds.PNG" />
+    <Image Include="cards_images\8_hearts.PNG" />
+    <Image Include="cards_images\8_spades.PNG" />
+    <Image Include="cards_images\9_clubs.PNG" />
+    <Image Include="cards_images\9_diamonds.PNG" />
+    <Image Include="cards_images\9_hearts.PNG" />
+    <Image Include="cards_images\9_spades.PNG" />
+    <Image Include="cards_images\A_clubs.PNG" />
+    <Image Include="cards_images\A_diamonds.PNG" />
+    <Image Include="cards_images\A_hearts.PNG" />
+    <Image Include="cards_images\A_spades.PNG" />
+    <Image Include="cards_images\Badge_clubs.PNG" />
+    <Image Include="cards_images\Badge_diamonds.PNG" />
+    <Image Include="cards_images\Badge_hearts.PNG" />
+    <Image Include="cards_images\Badge_spades.PNG" />
+    <Image Include="cards_images\Card_back.PNG" />
+    <Image Include="cards_images\J_clubs.PNG" />
+    <Image Include="cards_images\J_diamonds.PNG" />
+    <Image Include="cards_images\J_hearts.PNG" />
+    <Image Include="cards_images\J_spades.PNG" />
+    <Image Include="cards_images\K_clubs.PNG" />
+    <Image Include="cards_images\K_diamonds.PNG" />
+    <Image Include="cards_images\K_hearts.PNG" />
+    <Image Include="cards_images\K_spades.PNG" />
+    <Image Include="cards_images\Q_clubs.PNG" />
+    <Image Include="cards_images\Q_diamonds.PNG" />
+    <Image Include="cards_images\Q_hearts.PNG" />
+    <Image Include="cards_images\Q_spades.PNG" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
