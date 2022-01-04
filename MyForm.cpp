@@ -48,6 +48,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_19 = (gcnew System::Windows::Forms::PictureBox());
 	this->Player_card_20 = (gcnew System::Windows::Forms::PictureBox());
 	this->button1 = (gcnew System::Windows::Forms::Button());
+	this->button2 = (gcnew System::Windows::Forms::Button());
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_1))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_2))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_3))->BeginInit();
@@ -385,12 +386,23 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->button1->UseVisualStyleBackColor = true;
 	this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 	// 
+	// button2
+	// 
+	this->button2->Location = System::Drawing::Point(468, 54);
+	this->button2->Name = L"button2";
+	this->button2->Size = System::Drawing::Size(196, 23);
+	this->button2->TabIndex = 38;
+	this->button2->Text = L"button2";
+	this->button2->UseVisualStyleBackColor = true;
+	this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+	// 
 	// MyForm
 	// 
 	this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 	this->BackColor = System::Drawing::SystemColors::ScrollBar;
 	this->ClientSize = System::Drawing::Size(1298, 760);
+	this->Controls->Add(this->button2);
 	this->Controls->Add(this->button1);
 	this->Controls->Add(this->Player_card_20);
 	this->Controls->Add(this->Player_card_19);
@@ -471,16 +483,13 @@ void FoolGame::MyForm::InitializeComponent(void)
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Play_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	// 1- cards for computer
-	//Computer_player_cards->Image = Image::FromFile("cards_images/Card_back.PNG");
-
 	random_distribution_of_cards();
 
 }
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::random_distribution_of_cards()
 {
-	if (cards.size() > 0)
+	if (desc_cards.size() > 0)
 		return;
 
 	std::vector<std::pair<card_suit, int>> all_cards{
@@ -522,22 +531,35 @@ void FoolGame::MyForm::random_distribution_of_cards()
 	{card_suit::spades,9}
 	};
 
-	// мб переделать!
-	for (int i = 35; i >= 0; i--)
+
+	int number_of_cards = all_cards.size()-1;
+
+	while (number_of_cards >= 0)
 	{
-		int rand_index = get_random_int(0, i);
-		cards.push(all_cards[rand_index]);
+		int rand_index = get_random_int(0, number_of_cards);
+		desc_cards.push(all_cards[rand_index]);
 
 		// first card is a Trupm_card
-		if (i == 35)
+		if (number_of_cards == 35)
 		{
 			String^ way_to_card;
-			if (load_card(all_cards[rand_index], way_to_card))
+			if (load_card_image(all_cards[rand_index], way_to_card))
 			{
+				if (Trupm_card->Image)
+					Trupm_card->Image = nullptr;
+
 				Trupm_card->Image = Image::FromFile(way_to_card);
+				trump_suit = all_cards[rand_index].first;
+			}
+			// unlikely
+			else
+			{
+				return;
 			}
 		}
-		all_cards.erase(all_cards.begin()+rand_index);
+
+		all_cards.erase(all_cards.begin() + rand_index);
+		number_of_cards--;
 	}
 
 
@@ -545,16 +567,22 @@ void FoolGame::MyForm::random_distribution_of_cards()
 	Cards_in_the_desk->Image->RotateFlip(RotateFlipType::Rotate90FlipX);
 }
 //-----------------------------------------------------------------------------------------
-bool FoolGame::MyForm::get_card(std::pair<card_suit, int>& card)
+bool FoolGame::MyForm::get_card_from_desc(std::pair<card_suit, int>& card)
 {
-	if (cards.empty())
+	if (desc_cards.empty())
 		return false;
 
-	card = cards.top();
+	card = desc_cards.top();
 	// erase top element
-	cards.pop();
+	desc_cards.pop();
 
-	if (cards.empty())
+	if (desc_cards.size() == 1)
+	{
+		Cards_in_the_desk->Image = nullptr;
+		return true;
+	}
+
+	if (desc_cards.empty())
 	{
 		if (Cards_in_the_desk->Image)
 			Cards_in_the_desk->Image = nullptr;
@@ -565,34 +593,24 @@ bool FoolGame::MyForm::get_card(std::pair<card_suit, int>& card)
 		{
 		case card_suit::hearts:
 			Trupm_card->Image= Image::FromFile("cards_images/Badge_hearts.PNG");
+			break;
 		case card_suit::clubs:
 			Trupm_card->Image = Image::FromFile("cards_images/Badge_clubs.PNG");
+			break;
 		case card_suit::diamonds:
 			Trupm_card->Image = Image::FromFile("cards_images/Badge_diamonds.PNG");
+			break;
 		case card_suit::spades:
 			Trupm_card->Image = Image::FromFile("cards_images/Badge_spades.PNG");
+			break;
 		}
-		
-	}
-
-	if (cards.size() == 1)
-	{
-		Cards_in_the_desk->Image = nullptr;
+		return true;		
 	}
 
 	return true;
 }
 //-----------------------------------------------------------------------------------------
-int FoolGame::MyForm::get_random_int(const int& left_bound, const int& right_bound)
-{
-	if (left_bound == right_bound)
-		return left_bound;
-
-	srand(time(NULL));
-	return rand() % ((right_bound + 1) - left_bound) + left_bound;
-}
-//-----------------------------------------------------------------------------------------
-bool FoolGame::MyForm::load_card(const std::pair<card_suit, int>& card, String^% way)
+bool FoolGame::MyForm::load_card_image(const std::pair<card_suit, int>& card, String^% way)
 {
 	// 6
 	if ((card.first == card_suit::hearts) && (card.second == 1))
@@ -788,12 +806,162 @@ bool FoolGame::MyForm::load_card(const std::pair<card_suit, int>& card, String^%
 	return false;
 }
 //-----------------------------------------------------------------------------------------
-//System::Void FoolGame::MyForm::pictureBox1_Click(System::Object^ sender, System::EventArgs^ e)
-//{
-//	this->pictureBox1->Image = nullptr;
-//	/*Graphics^ g = Graphics::FromImage(pictureBox1->Image);
-//	g->Clear(SystemColors::ScrollBar);
-//	delete g;
-//	pictureBox1->Refresh();*/
-//}
+bool FoolGame::MyForm::take_card_for_player(const std::pair<card_suit, int>& card)
+{
+	PictureBox^ card_place;
+	if (!place_player_card_in_storage(card))
+		return false;
+
+	player_cards_in_storage.push_back(card);
+	return true;
+}
+//-----------------------------------------------------------------------------------------
+bool FoolGame::MyForm::place_player_card_in_storage(const std::pair<card_suit, int>& card)
+{
+	PictureBox^ card_place_in_storage;
+
+	switch (player_cards_in_storage.size())
+	{
+	case 0:
+		card_place_in_storage = Player_card_1;
+		break;
+	case 1:
+		card_place_in_storage = Player_card_2;
+		break;
+	case 2:
+		card_place_in_storage = Player_card_3;
+		break;
+	case 3:
+		card_place_in_storage = Player_card_4;
+		break;
+	case 4:
+		card_place_in_storage = Player_card_5;
+		break;
+	case 5:
+		card_place_in_storage = Player_card_6;
+		break;
+	case 6:
+		card_place_in_storage = Player_card_7;
+		break;
+	case 7:
+		card_place_in_storage = Player_card_8;
+		break;
+	case 8:
+		card_place_in_storage = Player_card_9;
+		break;
+	case 9:
+		card_place_in_storage = Player_card_10;
+		break;
+	case 10:
+		card_place_in_storage = Player_card_11;
+		break;
+	case 11:
+		card_place_in_storage = Player_card_12;
+		break;
+	case 12:
+		card_place_in_storage = Player_card_13;
+		break;
+	case 13:
+		card_place_in_storage = Player_card_14;
+		break;
+	case 14:
+		card_place_in_storage = Player_card_15;
+		break;
+	case 15:
+		card_place_in_storage = Player_card_16;
+		break;
+	case 16:
+		card_place_in_storage = Player_card_17;
+		break;
+	case 17:
+		card_place_in_storage = Player_card_18;
+		break;
+	case 18:
+		card_place_in_storage = Player_card_19;
+		break;
+	case 19:
+		card_place_in_storage = Player_card_20;
+		break;
+	default: 
+		return false;
+	}
+
+	// unlikely
+	String^ way_to_card;
+	if (!load_card_image(card, way_to_card))
+		return false;
+
+
+	card_place_in_storage->Image = Image::FromFile(way_to_card);
+	return true;
+}
+//-----------------------------------------------------------------------------------------
+bool FoolGame::MyForm::place_player_card_in_field(const std::pair<card_suit, int>& card)
+{
+	PictureBox^ card_place_in_battleground;
+
+	switch (player_cards_in_battleground.size())
+	{
+	case 0:
+		card_place_in_battleground = battleground_2;
+		break;
+	case 1:
+		card_place_in_battleground = battleground_4;
+		break;
+	case 2:
+		card_place_in_battleground = battleground_6;
+		break;
+	case 3:
+		card_place_in_battleground = battleground_8;
+		break;
+	case 4:
+		card_place_in_battleground = battleground_10;
+		break;
+	case 5:
+		card_place_in_battleground = battleground_12;
+		break;
+	default:
+		return false;
+	}
+
+	// unlikely
+	String^ way_to_card;
+	if (!load_card_image(card, way_to_card))
+		return false;
+
+
+	card_place_in_battleground->Image = Image::FromFile(way_to_card);
+	return true;
+}
+//-----------------------------------------------------------------------------------------
+bool FoolGame::MyForm::make_a_move(const std::pair<card_suit, int>& card)
+{
+	for (auto& player_card : player_cards_in_storage)
+	{
+		if (player_card == card)
+		{
+			// 2 4 6 8 10 12 - fields for player
+			if (!place_player_card_in_field(card))
+				return false;
+			else
+				return true;
+		}
+	}
+
+	return false;
+}
+//-----------------------------------------------------------------------------------------
+bool FoolGame::MyForm::is_card_a_trump(const std::pair<card_suit, int>& card)
+{
+	return (trump_suit == card.first);
+}
+//-----------------------------------------------------------------------------------------
+int FoolGame::MyForm::get_random_int(const int& left_bound, const int& right_bound)
+{
+	if (left_bound == right_bound)
+		return left_bound;
+
+	srand(time(NULL));
+	return rand() % ((right_bound + 1) - left_bound) + left_bound;
+}
 //-----------------------------------------------------------------------------------------

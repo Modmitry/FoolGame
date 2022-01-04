@@ -4,8 +4,7 @@
 #include <stack>
 #include <time.h>
 
-
-// members for card deck
+// card suit
 enum class card_suit
 {
 	hearts,
@@ -14,9 +13,14 @@ enum class card_suit
 	spades
 };
 
-std::stack<std::pair<card_suit,int>> cards;
+// members for card deck
+std::stack<std::pair<card_suit,int>> desc_cards;
 card_suit trump_suit;
-//--//
+//
+// members for player
+std::vector<std::pair<card_suit, int>> player_cards_in_storage;
+std::vector<std::pair<card_suit, int>> player_cards_in_battleground;
+bool players_turn = false;
 
 
 
@@ -88,10 +92,12 @@ namespace FoolGame {
 	private: System::Windows::Forms::PictureBox^ Player_card_19;
 	private: System::Windows::Forms::PictureBox^ Player_card_20;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button2;
 
 	private:
 		/// Required designer variable.
 		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// Required method for Designer support - do not modify
@@ -100,24 +106,43 @@ namespace FoolGame {
 		
 #pragma endregion
 
-	private: System::Void Play_Click(System::Object^ sender, System::EventArgs^ e);
+	private: 
+		
+	System::Void Play_Click(System::Object^ sender, System::EventArgs^ e);
 
-	// methods for card deck
-	public: 
 
+	// methods for card deck 
 	void random_distribution_of_cards();	
-	bool get_card(std::pair<card_suit, int>& card);
-	int get_random_int(const int& left_bound, const int& right_bound);
-	bool load_card(const std::pair<card_suit, int>& card, String^% way);
+	bool get_card_from_desc(std::pair<card_suit, int>& card);	
+	bool load_card_image(const std::pair<card_suit, int>& card, String^% way);
 	//
 
+	// methods for player
+	bool take_card_for_player(const std::pair<card_suit, int>& card);
+	bool place_player_card_in_storage(const std::pair<card_suit, int>& card);
+	bool place_player_card_in_field(const std::pair<card_suit, int>& card);
+	bool make_a_move(const std::pair<card_suit, int>& card);
+
+
+
+
+	bool is_card_a_trump(const std::pair<card_suit, int>& card);
+	static int get_random_int(const int& left_bound, const int& right_bound);
 
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		std::pair<card_suit, int> card1;
-		get_card(card1);
-		int a12 = 5;
+		get_card_from_desc(card1);
+
+		bool alpha = take_card_for_player(card1);
+
 	}
-	};
+		  
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+
+
+	}
+};
 }
