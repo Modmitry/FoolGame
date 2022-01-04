@@ -1,17 +1,8 @@
 #pragma once
 #include <vector>
-#include <string>
 #include <stack>
-#include <time.h>
+#include "card_methods.h"
 
-// card suit
-enum class card_suit
-{
-	hearts,
-	clubs,
-	diamonds,
-	spades
-};
 
 // members for card deck
 std::stack<std::pair<card_suit,int>> desc_cards;
@@ -114,7 +105,6 @@ namespace FoolGame {
 	// methods for card deck 
 	void random_distribution_of_cards();	
 	bool get_card_from_desc(std::pair<card_suit, int>& card);	
-	bool load_card_image(const std::pair<card_suit, int>& card, String^% way);
 	//
 
 	// methods for player
@@ -122,12 +112,11 @@ namespace FoolGame {
 	bool place_player_card_in_storage(const std::pair<card_suit, int>& card);
 	bool place_player_card_in_field(const std::pair<card_suit, int>& card);
 	bool make_a_move(const std::pair<card_suit, int>& card);
-
+	
 
 
 
 	bool is_card_a_trump(const std::pair<card_suit, int>& card);
-	static int get_random_int(const int& left_bound, const int& right_bound);
 
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -144,5 +133,48 @@ namespace FoolGame {
 
 
 	}
+private: System::Void Player_card_1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (!Player_card_1->Image)
+		return;
+
+	String^ card_indx = Player_card_1->Text;
+
+	std::pair<card_suit, int> card;
+
+	if (!card_methods::card_by_index(card, card_indx))
+		return;
+	//String^ way;
+	//card_methods::load_card_image12(card,way);
+
+	//int ac12 = Player_card_1->
+}
+private: System::Void Player_card_2_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (!Player_card_2->Image)
+		return;
+
+}
+private: System::Void Player_card_3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (!Player_card_3->Image)
+		return;
+}
+private: System::Void Player_card_4_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (!Player_card_4->Image)
+		return;
+}
+private: System::Void Player_card_5_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (!Player_card_5->Image)
+		return;
+
+}
+private: System::Void Player_card_6_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (!Player_card_6->Image)
+		return;
+}
 };
 }

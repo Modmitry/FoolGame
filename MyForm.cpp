@@ -223,6 +223,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_1->Size = System::Drawing::Size(100, 143);
 	this->Player_card_1->TabIndex = 17;
 	this->Player_card_1->TabStop = false;
+	this->Player_card_1->Click += gcnew System::EventHandler(this, &MyForm::Player_card_1_Click);
 	// 
 	// Player_card_2
 	// 
@@ -231,6 +232,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_2->Size = System::Drawing::Size(100, 143);
 	this->Player_card_2->TabIndex = 18;
 	this->Player_card_2->TabStop = false;
+	this->Player_card_2->Click += gcnew System::EventHandler(this, &MyForm::Player_card_2_Click);
 	// 
 	// Player_card_3
 	// 
@@ -239,6 +241,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_3->Size = System::Drawing::Size(100, 143);
 	this->Player_card_3->TabIndex = 19;
 	this->Player_card_3->TabStop = false;
+	this->Player_card_3->Click += gcnew System::EventHandler(this, &MyForm::Player_card_3_Click);
 	// 
 	// Player_card_4
 	// 
@@ -247,6 +250,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_4->Size = System::Drawing::Size(100, 143);
 	this->Player_card_4->TabIndex = 20;
 	this->Player_card_4->TabStop = false;
+	this->Player_card_4->Click += gcnew System::EventHandler(this, &MyForm::Player_card_4_Click);
 	// 
 	// Player_card_5
 	// 
@@ -255,6 +259,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_5->Size = System::Drawing::Size(100, 143);
 	this->Player_card_5->TabIndex = 25;
 	this->Player_card_5->TabStop = false;
+	this->Player_card_5->Click += gcnew System::EventHandler(this, &MyForm::Player_card_5_Click);
 	// 
 	// Player_card_6
 	// 
@@ -263,6 +268,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_6->Size = System::Drawing::Size(100, 143);
 	this->Player_card_6->TabIndex = 21;
 	this->Player_card_6->TabStop = false;
+	this->Player_card_6->Click += gcnew System::EventHandler(this, &MyForm::Player_card_6_Click);
 	// 
 	// Player_card_7
 	// 
@@ -536,14 +542,14 @@ void FoolGame::MyForm::random_distribution_of_cards()
 
 	while (number_of_cards >= 0)
 	{
-		int rand_index = get_random_int(0, number_of_cards);
+		int rand_index = card_methods::get_random_int(0, number_of_cards);
 		desc_cards.push(all_cards[rand_index]);
 
 		// first card is a Trupm_card
 		if (number_of_cards == 35)
 		{
 			String^ way_to_card;
-			if (load_card_image(all_cards[rand_index], way_to_card))
+			if (card_methods::load_card_image(all_cards[rand_index], way_to_card))
 			{
 				if (Trupm_card->Image)
 					Trupm_card->Image = nullptr;
@@ -608,202 +614,6 @@ bool FoolGame::MyForm::get_card_from_desc(std::pair<card_suit, int>& card)
 	}
 
 	return true;
-}
-//-----------------------------------------------------------------------------------------
-bool FoolGame::MyForm::load_card_image(const std::pair<card_suit, int>& card, String^% way)
-{
-	// 6
-	if ((card.first == card_suit::hearts) && (card.second == 1))
-	{
-		way = "cards_images/6_hearts.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::clubs) && (card.second == 1))
-	{
-		way = "cards_images/6_clubs.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::diamonds) && (card.second == 1))
-	{
-		way = "cards_images/6_diamonds.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::spades) && (card.second == 1))
-	{
-		way = "cards_images/6_spades.PNG";
-		return true;
-	}
-	// 7
-	if ((card.first == card_suit::hearts) && (card.second == 2))
-	{
-		way = "cards_images/7_hearts.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::clubs) && (card.second == 2))
-	{
-		way = "cards_images/7_clubs.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::diamonds) && (card.second == 2))
-	{
-		way = "cards_images/7_diamonds.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::spades) && (card.second == 2))
-	{
-		way = "cards_images/7_spades.PNG";
-		return true;
-	}
-	// 8
-	if ((card.first == card_suit::hearts) && (card.second == 3))
-	{
-		way = "cards_images/8_hearts.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::clubs) && (card.second == 3))
-	{
-		way = "cards_images/8_clubs.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::diamonds) && (card.second == 3))
-	{
-		way = "cards_images/8_diamonds.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::spades) && (card.second == 3))
-	{
-		way = "cards_images/8_spades.PNG";
-		return true;
-	}
-	// 9
-	if ((card.first == card_suit::hearts) && (card.second == 4))
-	{
-		way = "cards_images/9_hearts.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::clubs) && (card.second == 4))
-	{
-		way = "cards_images/9_clubs.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::diamonds) && (card.second == 4))
-	{
-		way = "cards_images/9_diamonds.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::spades) && (card.second == 4))
-	{
-		way = "cards_images/9_spades.PNG";
-		return true;
-	}
-	// 10
-	if ((card.first == card_suit::hearts) && (card.second == 5))
-	{
-		way = "cards_images/10_hearts.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::clubs) && (card.second == 5))
-	{
-		way = "cards_images/10_clubs.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::diamonds) && (card.second == 5))
-	{
-		way = "cards_images/10_diamonds.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::spades) && (card.second == 5))
-	{
-		way = "cards_images/10_spades.PNG";
-		return true;
-	}
-	// J
-	if ((card.first == card_suit::hearts) && (card.second == 6))
-	{
-		way = "cards_images/J_hearts.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::clubs) && (card.second == 6))
-	{
-		way = "cards_images/J_clubs.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::diamonds) && (card.second == 6))
-	{
-		way = "cards_images/J_diamonds.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::spades) && (card.second == 6))
-	{
-		way = "cards_images/J_spades.PNG";
-		return true;
-	}
-	// Q
-	if ((card.first == card_suit::hearts) && (card.second == 7))
-	{
-		way = "cards_images/Q_hearts.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::clubs) && (card.second == 7))
-	{
-		way = "cards_images/Q_clubs.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::diamonds) && (card.second == 7))
-	{
-		way = "cards_images/Q_diamonds.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::spades) && (card.second == 7))
-	{
-		way = "cards_images/Q_spades.PNG";
-		return true;
-	}
-	// K
-	if ((card.first == card_suit::hearts) && (card.second == 8))
-	{
-		way = "cards_images/K_hearts.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::clubs) && (card.second == 8))
-	{
-		way = "cards_images/K_clubs.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::diamonds) && (card.second == 8))
-	{
-		way = "cards_images/K_diamonds.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::spades) && (card.second == 8))
-	{
-		way = "cards_images/K_spades.PNG";
-		return true;
-	}
-	// A
-	if ((card.first == card_suit::hearts) && (card.second == 9))
-	{
-		way = "cards_images/A_hearts.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::clubs) && (card.second == 9))
-	{
-		way = "cards_images/A_clubs.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::diamonds) && (card.second == 9))
-	{
-		way = "cards_images/A_diamonds.PNG";
-		return true;
-	}
-	if ((card.first == card_suit::spades) && (card.second == 9))
-	{
-		way = "cards_images/A_spades.PNG";
-		return true;
-	}
-
-	// if not found
-	return false;
 }
 //-----------------------------------------------------------------------------------------
 bool FoolGame::MyForm::take_card_for_player(const std::pair<card_suit, int>& card)
@@ -888,11 +698,17 @@ bool FoolGame::MyForm::place_player_card_in_storage(const std::pair<card_suit, i
 
 	// unlikely
 	String^ way_to_card;
-	if (!load_card_image(card, way_to_card))
+	if (!card_methods::load_card_image(card, way_to_card))
 		return false;
 
+	// unlikely
+	String^ card_indx;
+	if (!card_methods::index_by_card(card_indx, card))
+		return false;
 
 	card_place_in_storage->Image = Image::FromFile(way_to_card);
+	card_place_in_storage->Text = card_indx;
+
 	return true;
 }
 //-----------------------------------------------------------------------------------------
@@ -926,7 +742,7 @@ bool FoolGame::MyForm::place_player_card_in_field(const std::pair<card_suit, int
 
 	// unlikely
 	String^ way_to_card;
-	if (!load_card_image(card, way_to_card))
+	if (!card_methods::load_card_image(card, way_to_card))
 		return false;
 
 
@@ -954,14 +770,5 @@ bool FoolGame::MyForm::make_a_move(const std::pair<card_suit, int>& card)
 bool FoolGame::MyForm::is_card_a_trump(const std::pair<card_suit, int>& card)
 {
 	return (trump_suit == card.first);
-}
-//-----------------------------------------------------------------------------------------
-int FoolGame::MyForm::get_random_int(const int& left_bound, const int& right_bound)
-{
-	if (left_bound == right_bound)
-		return left_bound;
-
-	srand(time(NULL));
-	return rand() % ((right_bound + 1) - left_bound) + left_bound;
 }
 //-----------------------------------------------------------------------------------------
