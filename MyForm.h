@@ -12,6 +12,11 @@ card_suit trump_suit;
 std::vector<std::pair<card_suit, int>> player_cards_in_storage;
 std::vector<std::pair<card_suit, int>> player_cards_in_battleground;
 bool players_turn = false;
+bool players_current_turn = false;
+//
+// members for computer opponent
+std::vector<std::pair<card_suit, int>> computer_cards_in_storage;
+
 
 
 
@@ -93,6 +98,10 @@ namespace FoolGame {
 	private: System::Windows::Forms::Button^ play_button;
 	private: System::Windows::Forms::Button^ finished__take_cards_button;
 	private: System::Windows::Forms::Button^ sort_cards_button;
+	// label
+	private: System::Windows::Forms::Label^ Label;
+
+
 
 	/// Required designer variable.
 	private: System::ComponentModel::Container ^components;
@@ -106,6 +115,7 @@ namespace FoolGame {
 #pragma endregion
 
 	// card clicks
+	private: void Player_card_Click(System::Windows::Forms::PictureBox^% Player_card);
 	private: System::Void Player_card_1_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void Player_card_2_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void Player_card_3_Click(System::Object^ sender, System::EventArgs^ e);
@@ -126,7 +136,7 @@ namespace FoolGame {
 	private: System::Void Player_card_18_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void Player_card_19_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void Player_card_20_Click(System::Object^ sender, System::EventArgs^ e);
-
+		   
 	// button clicks
 	private: System::Void Play_Game_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void finished__take_cards_button_Click(System::Object^ sender, System::EventArgs^ e);
@@ -143,9 +153,11 @@ namespace FoolGame {
 	bool place_player_card_in_storage(const std::pair<card_suit, int>& card);
 	bool place_player_card_in_field(const std::pair<card_suit, int>& card);
 	void update_player_cards();
-
 	void give_cards_to_the_player();
 	
+
+	// members for computer opponent
+	void give_cards_to_the_computer();
 
 
 
@@ -153,12 +165,6 @@ namespace FoolGame {
 
 
 	
-		  
-	
-
-
-
-
-
+		 
 };
 }

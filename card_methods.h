@@ -31,5 +31,6 @@ public:
 	static bool index_by_card(String^% indx, const std::pair<card_suit, int>& card);
 	static bool card_by_index(std::pair<card_suit, int>& card,String^% indx);
 	static int get_random_int(const int& left_bound, const int& right_bound);
+	static void sort_cards(std::vector<std::pair<card_suit, int>>& cards, const card_suit& trump);
 };
 

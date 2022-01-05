@@ -49,6 +49,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_20 = (gcnew System::Windows::Forms::PictureBox());
 	this->finished__take_cards_button = (gcnew System::Windows::Forms::Button());
 	this->sort_cards_button = (gcnew System::Windows::Forms::Button());
+	this->Label = (gcnew System::Windows::Forms::Label());
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_1))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_2))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_3))->BeginInit();
@@ -416,12 +417,22 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->sort_cards_button->UseVisualStyleBackColor = true;
 	this->sort_cards_button->Click += gcnew System::EventHandler(this, &MyForm::sort_cards_button_Click);
 	// 
+	// Label
+	// 
+	this->Label->AutoSize = true;
+	this->Label->Location = System::Drawing::Point(53, 113);
+	this->Label->Name = L"Label";
+	this->Label->Size = System::Drawing::Size(10, 13);
+	this->Label->TabIndex = 39;
+	this->Label->Text = L"";
+	// 
 	// MyForm
 	// 
 	this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 	this->BackColor = System::Drawing::SystemColors::ScrollBar;
 	this->ClientSize = System::Drawing::Size(1298, 760);
+	this->Controls->Add(this->Label);
 	this->Controls->Add(this->sort_cards_button);
 	this->Controls->Add(this->finished__take_cards_button);
 	this->Controls->Add(this->Player_card_20);
@@ -498,16 +509,20 @@ void FoolGame::MyForm::InitializeComponent(void)
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_19))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_20))->EndInit();
 	this->ResumeLayout(false);
+	this->PerformLayout();
 
 }
 //-----------------------------------------------------------------------------------------
-System::Void FoolGame::MyForm::Player_card_1_Click(System::Object^ sender, System::EventArgs^ e) {
+void FoolGame::MyForm::Player_card_Click(System::Windows::Forms::PictureBox^% Player_card)
+{
+	if (!players_current_turn)
+		return;
 
-	if (!Player_card_1->Image)
+	if (!Player_card->Image)
 		return;
 
 	std::pair<card_suit, int> card;
-	if (!card_methods::card_by_index(card, Player_card_1->Text))
+	if (!card_methods::card_by_index(card, Player_card->Text))
 		return;
 
 	if (!place_player_card_in_field(card))
@@ -523,109 +538,142 @@ System::Void FoolGame::MyForm::Player_card_1_Click(System::Object^ sender, Syste
 	update_player_cards();
 }
 //-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_1_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	Player_card_Click(Player_card_1);
+}
+//-----------------------------------------------------------------------------------------
 System::Void  FoolGame::MyForm::Player_card_2_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_2);
 }
 //-----------------------------------------------------------------------------------------
 System::Void  FoolGame::MyForm::Player_card_3_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_3);
 }
 //-----------------------------------------------------------------------------------------
 System::Void  FoolGame::MyForm::Player_card_4_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_4);
 }
 //-----------------------------------------------------------------------------------------
 System::Void  FoolGame::MyForm::Player_card_5_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_5);
 }
 //-----------------------------------------------------------------------------------------
 System::Void  FoolGame::MyForm::Player_card_6_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_6);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_7_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_7);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_8_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_8);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_9_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_9);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_10_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_10);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_11_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_11);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_12_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_12);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_13_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_13);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_14_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_14);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_15_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_15);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_16_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_16);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_17_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_17);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_18_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_18);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_19_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_19);
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_20_Click(System::Object^ sender, System::EventArgs^ e)
 {
-
+	Player_card_Click(Player_card_20);
 }
 //-----------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Play_Game_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	if (desc_cards.size() > 0)
+		return;
+
+
 	// 1 step. Getting the trump card and random put cards in the desk
 	random_distribution_of_cards();
 
 	// 2 step. Give cards to player
 	give_cards_to_the_player();
+
+	// 3 step. Give cards to computer opponent
+	give_cards_to_the_computer();
+
+	// 4 step. recognize queue of turn. (RANDOM)
+	if (card_methods::get_random_int(1, 10)>5)
+	{
+		players_turn = true;
+		players_current_turn = true;
+		this->Label->Text = L"     YOUR MOVE   ";
+	}
+	else
+	{
+		players_turn = false;
+		players_current_turn = false;
+		this->Label->Text = L"  OPPONENT'S MOVE  ";
+		
+	}
+
+	
+
+
+
+
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::finished__take_cards_button_Click(System::Object^ sender, System::EventArgs^ e)
@@ -635,7 +683,11 @@ System::Void FoolGame::MyForm::finished__take_cards_button_Click(System::Object^
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::sort_cards_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	
+	if (player_cards_in_storage.size() < 2)
+		return;
+
+	card_methods::sort_cards(player_cards_in_storage, trump_suit);
+	update_player_cards();
 }
 //-----------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------
@@ -936,7 +988,21 @@ void FoolGame::MyForm::give_cards_to_the_player()
 		}
 		else
 			return;
+	}
+}
+//-----------------------------------------------------------------------------------------
+void FoolGame::MyForm::give_cards_to_the_computer()
+{
+	while (computer_cards_in_storage.size() < 6)
+	{
+		std::pair<card_suit, int> computer_card;
 
+		if (get_card_from_desc(computer_card))
+		{
+			computer_cards_in_storage.push_back(computer_card);
+		}
+		else
+			return;
 	}
 }
 //-----------------------------------------------------------------------------------------

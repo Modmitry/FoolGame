@@ -599,3 +599,24 @@ int card_methods::get_random_int(const int& left_bound, const int& right_bound)
 	return mersenne() % ((right_bound + 1) - left_bound) + left_bound;
 }
 //-----------------------------------------------------------------------------------------
+void card_methods::sort_cards(std::vector<std::pair<card_suit, int>>& cards, const card_suit& trump)
+{
+	std::sort(cards.begin(), cards.end(), [&](const std::pair<card_suit, int>& a, const std::pair<card_suit, int>& b) 
+	{
+		// if card A is a trump card
+		if ((a.first == trump) && (b.first != trump))
+		{
+			return false;
+		}
+		// if card B is a trump card
+		if ((a.first != trump) && (b.first == trump))
+		{
+			return true;
+		}
+
+		//if (a.first == b.first)
+		return a.second < b.second;
+	});
+
+}
+//-----------------------------------------------------------------------------------------
