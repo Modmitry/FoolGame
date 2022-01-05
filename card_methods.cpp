@@ -601,7 +601,7 @@ int card_methods::get_random_int(const int& left_bound, const int& right_bound)
 //-----------------------------------------------------------------------------------------
 void card_methods::sort_cards(std::vector<std::pair<card_suit, int>>& cards, const card_suit& trump)
 {
-	std::sort(cards.begin(), cards.end(), [&](const std::pair<card_suit, int>& a, const std::pair<card_suit, int>& b) 
+	std::sort(cards.begin(), cards.end(), [&](const auto& a, const auto& b) 
 	{
 		// if card A is a trump card
 		if ((a.first == trump) && (b.first != trump))
@@ -614,9 +614,47 @@ void card_methods::sort_cards(std::vector<std::pair<card_suit, int>>& cards, con
 			return true;
 		}
 
-		//if (a.first == b.first)
 		return a.second < b.second;
 	});
+}
+//-----------------------------------------------------------------------------------------
+bool card_methods::find_card_to_attack(
+	const std::vector<std::pair<card_suit, int>>& cards_on_field,
+	const std::vector<std::pair<card_suit, int>>& cards_where_to_find,
+	const card_suit& trump,
+	std::pair<card_methods::card_suit, int>& card)
+{
+	// kind of cards
+	std::set<int> different_cards;
+	for (const auto& card : cards_on_field)
+	{
+		different_cards.insert(card.second);
+	}
 
+	// if not found not_trump card
+	std::vector<std::pair<card_suit, int>>::const_iterator it =
+		std::find_if(cards_where_to_find.begin(), cards_where_to_find.end(), [&](const auto& a)
+			{
+				if (a.first == trump)
+					return false;
+
+				if (different_cards.count(a.second))
+					return true;
+			});
+		
+
+	// founded card to attack
+	if (it != cards_where_to_find.end())
+	{
+		card = *it;
+		return true;
+	}
+	else
+	{
+
+
+	}
+
+	return false;
 }
 //-----------------------------------------------------------------------------------------

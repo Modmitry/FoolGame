@@ -1,22 +1,22 @@
 #pragma once
-#include <vector>
-#include <stack>
 #include "card_methods.h"
 
 
 // members for card deck
-std::stack<std::pair<card_suit,int>> desc_cards;
-card_suit trump_suit;
+std::stack<std::pair<card_methods::card_suit,int>> desc_cards;
+card_methods::card_suit trump_suit;
 //
 // members for player
-std::vector<std::pair<card_suit, int>> player_cards_in_storage;
-std::vector<std::pair<card_suit, int>> player_cards_in_battleground;
+std::vector<std::pair<card_methods::card_suit, int>> player_cards_in_storage;
 bool players_turn = false;
 bool players_current_turn = false;
 //
 // members for computer opponent
-std::vector<std::pair<card_suit, int>> computer_cards_in_storage;
-
+std::vector<std::pair<card_methods::card_suit, int>> computer_cards_in_storage;
+//
+// members battleground cards
+std::vector<std::pair<card_methods::card_suit, int>> cards_in_battleground;
+//
 
 
 
@@ -139,29 +139,37 @@ namespace FoolGame {
 		   
 	// button clicks
 	private: System::Void Play_Game_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void finished__take_cards_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void finished_or_take_cards_button_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void sort_cards_button_Click(System::Object^ sender, System::EventArgs^ e); 
 
 
 
 	// methods for card deck 
 	void random_distribution_of_cards();	
-	bool get_card_from_desc(std::pair<card_suit, int>& card);	
+	bool get_card_from_desc(std::pair<card_methods::card_suit, int>& card);
 	//
 
 	// methods for player
-	bool place_player_card_in_storage(const std::pair<card_suit, int>& card);
-	bool place_player_card_in_field(const std::pair<card_suit, int>& card);
-	void update_player_cards();
+	bool place_player_card_in_storage(const std::pair<card_methods::card_suit, int>& card);
 	void give_cards_to_the_player();
-	
+	void update_player_cards();
+	//
 
-	// members for computer opponent
+	// methods for computer opponent
 	void give_cards_to_the_computer();
+	void determine_the_turn_of_the_move();
+	void computer_intelligence();
+	void computer_attacks();
+	void computer_protects(std::pair<card_methods::card_suit, int>& card);
+	//
+
+	// methods battleground cards
+	bool place_card_in_battleground_field(const std::pair<card_methods::card_suit, int>& card, const bool& is_players_card);
+	void take_cards_from_battleground_field(std::vector<std::pair<card_methods::card_suit, int>>& cards, const bool& is_players_card);
+	bool battleground_field_is_clear();
 
 
-
-	bool is_card_a_trump(const std::pair<card_suit, int>& card);
+	bool is_card_a_trump(const std::pair<card_methods::card_suit, int>& card);
 
 
 	

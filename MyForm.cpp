@@ -405,7 +405,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->finished__take_cards_button->TabIndex = 37;
 	this->finished__take_cards_button->Text = L"Finished/Pick up cards";
 	this->finished__take_cards_button->UseVisualStyleBackColor = true;
-	this->finished__take_cards_button->Click += gcnew System::EventHandler(this, &MyForm::finished__take_cards_button_Click);
+	this->finished__take_cards_button->Click += gcnew System::EventHandler(this, &MyForm::finished_or_take_cards_button_Click);
 	// 
 	// sort_cards_button
 	// 
@@ -521,11 +521,11 @@ void FoolGame::MyForm::Player_card_Click(System::Windows::Forms::PictureBox^% Pl
 	if (!Player_card->Image)
 		return;
 
-	std::pair<card_suit, int> card;
+	std::pair<card_methods::card_suit, int> card;
 	if (!card_methods::card_by_index(card, Player_card->Text))
 		return;
 
-	if (!place_player_card_in_field(card))
+	if (!place_card_in_battleground_field(card,true))
 		return;
 
 
@@ -536,6 +536,11 @@ void FoolGame::MyForm::Player_card_Click(System::Windows::Forms::PictureBox^% Pl
 		return;
 
 	update_player_cards();
+
+
+	players_current_turn = false;
+	// transfer of the turn to the computer
+	computer_intelligence();
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Player_card_1_Click(System::Object^ sender, System::EventArgs^ e)
@@ -644,7 +649,6 @@ System::Void FoolGame::MyForm::Play_Game_Click(System::Object^ sender, System::E
 	if (desc_cards.size() > 0)
 		return;
 
-
 	// 1 step. Getting the trump card and random put cards in the desk
 	random_distribution_of_cards();
 
@@ -655,20 +659,10 @@ System::Void FoolGame::MyForm::Play_Game_Click(System::Object^ sender, System::E
 	give_cards_to_the_computer();
 
 	// 4 step. recognize queue of turn. (RANDOM)
-	if (card_methods::get_random_int(1, 10)>5)
-	{
-		players_turn = true;
-		players_current_turn = true;
-		this->Label->Text = L"     YOUR MOVE   ";
-	}
-	else
-	{
-		players_turn = false;
-		players_current_turn = false;
-		this->Label->Text = L"  OPPONENT'S MOVE  ";
-		
-	}
+	determine_the_turn_of_the_move();
 
+
+	computer_intelligence();
 	
 
 
@@ -676,8 +670,40 @@ System::Void FoolGame::MyForm::Play_Game_Click(System::Object^ sender, System::E
 
 }
 //-----------------------------------------------------------------------------------------
-System::Void FoolGame::MyForm::finished__take_cards_button_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void FoolGame::MyForm::finished_or_take_cards_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	// lambda function
+
+
+
+
+
+
+	// if player want to finished current round
+	if (players_turn)
+	{
+		if (players_current_turn)
+			return;
+
+
+
+
+	}
+	//  if player want to take cards
+	else
+	{
+		if (!players_current_turn)
+			return;
+
+
+	
+
+
+
+
+	}
+
+
 	
 }
 //-----------------------------------------------------------------------------------------
@@ -693,46 +719,43 @@ System::Void FoolGame::MyForm::sort_cards_button_Click(System::Object^ sender, S
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::random_distribution_of_cards()
 {
-	if (desc_cards.size() > 0)
-		return;
-
-	std::vector<std::pair<card_suit, int>> all_cards{
-	{card_suit::hearts,1},
-	{card_suit::hearts,2},
-	{card_suit::hearts,3},
-	{card_suit::hearts,4},
-	{card_suit::hearts,5},
-	{card_suit::hearts,6},
-	{card_suit::hearts,7},
-	{card_suit::hearts,8},
-	{card_suit::hearts,9},
-	{card_suit::clubs,1},
-	{card_suit::clubs,2},
-	{card_suit::clubs,3},
-	{card_suit::clubs,4},
-	{card_suit::clubs,5},
-	{card_suit::clubs,6},
-	{card_suit::clubs,7},
-	{card_suit::clubs,8},
-	{card_suit::clubs,9},
-	{card_suit::diamonds,1},
-	{card_suit::diamonds,2},
-	{card_suit::diamonds,3},
-	{card_suit::diamonds,4},
-	{card_suit::diamonds,5},
-	{card_suit::diamonds,6},
-	{card_suit::diamonds,7},
-	{card_suit::diamonds,8},
-	{card_suit::diamonds,9},
-	{card_suit::spades,1},
-	{card_suit::spades,2},
-	{card_suit::spades,3},
-	{card_suit::spades,4},
-	{card_suit::spades,5},
-	{card_suit::spades,6},
-	{card_suit::spades,7},
-	{card_suit::spades,8},
-	{card_suit::spades,9}
+	std::vector<std::pair<card_methods::card_suit, int>> all_cards{
+	{card_methods::card_suit::hearts,1},
+	{card_methods::card_suit::hearts,2},
+	{card_methods::card_suit::hearts,3},
+	{card_methods::card_suit::hearts,4},
+	{card_methods::card_suit::hearts,5},
+	{card_methods::card_suit::hearts,6},
+	{card_methods::card_suit::hearts,7},
+	{card_methods::card_suit::hearts,8},
+	{card_methods::card_suit::hearts,9},
+	{card_methods::card_suit::clubs,1},
+	{card_methods::card_suit::clubs,2},
+	{card_methods::card_suit::clubs,3},
+	{card_methods::card_suit::clubs,4},
+	{card_methods::card_suit::clubs,5},
+	{card_methods::card_suit::clubs,6},
+	{card_methods::card_suit::clubs,7},
+	{card_methods::card_suit::clubs,8},
+	{card_methods::card_suit::clubs,9},
+	{card_methods::card_suit::diamonds,1},
+	{card_methods::card_suit::diamonds,2},
+	{card_methods::card_suit::diamonds,3},
+	{card_methods::card_suit::diamonds,4},
+	{card_methods::card_suit::diamonds,5},
+	{card_methods::card_suit::diamonds,6},
+	{card_methods::card_suit::diamonds,7},
+	{card_methods::card_suit::diamonds,8},
+	{card_methods::card_suit::diamonds,9},
+	{card_methods::card_suit::spades,1},
+	{card_methods::card_suit::spades,2},
+	{card_methods::card_suit::spades,3},
+	{card_methods::card_suit::spades,4},
+	{card_methods::card_suit::spades,5},
+	{card_methods::card_suit::spades,6},
+	{card_methods::card_suit::spades,7},
+	{card_methods::card_suit::spades,8},
+	{card_methods::card_suit::spades,9}
 	};
 
 
@@ -753,6 +776,7 @@ void FoolGame::MyForm::random_distribution_of_cards()
 					Trupm_card->Image = nullptr;
 
 				Trupm_card->Image = Image::FromFile(way_to_card);
+				Trupm_card->Refresh();
 				trump_suit = all_cards[rand_index].first;
 			}
 			// unlikely
@@ -769,9 +793,10 @@ void FoolGame::MyForm::random_distribution_of_cards()
 
 	Cards_in_the_desk->Image = Image::FromFile("cards_images/Card_back.PNG");
 	Cards_in_the_desk->Image->RotateFlip(RotateFlipType::Rotate90FlipX);
+	Cards_in_the_desk->Refresh();
 }
 //-----------------------------------------------------------------------------------------
-bool FoolGame::MyForm::get_card_from_desc(std::pair<card_suit, int>& card)
+bool FoolGame::MyForm::get_card_from_desc(std::pair<card_methods::card_suit, int>& card)
 {
 	if (desc_cards.empty())
 		return false;
@@ -795,16 +820,16 @@ bool FoolGame::MyForm::get_card_from_desc(std::pair<card_suit, int>& card)
 
 		switch (card.first)
 		{
-		case card_suit::hearts:
+		case card_methods::card_suit::hearts:
 			Trupm_card->Image= Image::FromFile("cards_images/Badge_hearts.PNG");
 			break;
-		case card_suit::clubs:
+		case card_methods::card_suit::clubs:
 			Trupm_card->Image = Image::FromFile("cards_images/Badge_clubs.PNG");
 			break;
-		case card_suit::diamonds:
+		case card_methods::card_suit::diamonds:
 			Trupm_card->Image = Image::FromFile("cards_images/Badge_diamonds.PNG");
 			break;
-		case card_suit::spades:
+		case card_methods::card_suit::spades:
 			Trupm_card->Image = Image::FromFile("cards_images/Badge_spades.PNG");
 			break;
 		}
@@ -814,7 +839,8 @@ bool FoolGame::MyForm::get_card_from_desc(std::pair<card_suit, int>& card)
 	return true;
 }
 //-----------------------------------------------------------------------------------------
-bool FoolGame::MyForm::place_player_card_in_storage(const std::pair<card_suit, int>& card)
+//-----------------------------------------------------------------------------------------
+bool FoolGame::MyForm::place_player_card_in_storage(const std::pair<card_methods::card_suit, int>& card)
 {
 	PictureBox^ card_place_in_storage;
 
@@ -898,88 +924,16 @@ bool FoolGame::MyForm::place_player_card_in_storage(const std::pair<card_suit, i
 	player_cards_in_storage.push_back(card);
 	card_place_in_storage->Image = Image::FromFile(way_to_card);
 	card_place_in_storage->Text = card_indx;
+	card_place_in_storage->Refresh();
 
 	return true;
-}
-//-----------------------------------------------------------------------------------------
-bool FoolGame::MyForm::place_player_card_in_field(const std::pair<card_suit, int>& card)
-{
-	PictureBox^ card_place_in_battleground;
-
-	switch (player_cards_in_battleground.size())
-	{
-	case 0:
-		card_place_in_battleground = battleground_2;
-		break;
-	case 1:
-		card_place_in_battleground = battleground_4;
-		break;
-	case 2:
-		card_place_in_battleground = battleground_6;
-		break;
-	case 3:
-		card_place_in_battleground = battleground_8;
-		break;
-	case 4:
-		card_place_in_battleground = battleground_10;
-		break;
-	case 5:
-		card_place_in_battleground = battleground_12;
-		break;
-	default:
-		return false;
-	}
-
-	// unlikely
-	String^ way_to_card;
-	if (!card_methods::load_card_image(card, way_to_card))
-		return false;
-
-	player_cards_in_battleground.push_back(card);
-	card_place_in_battleground->Image = Image::FromFile(way_to_card);
-	return true;
-}
-//-----------------------------------------------------------------------------------------
-void FoolGame::MyForm::update_player_cards()
-{
-	Player_card_1->Image = nullptr; Player_card_1->ResetText();
-	Player_card_2->Image = nullptr; Player_card_2->ResetText();
-	Player_card_3->Image = nullptr; Player_card_3->ResetText();
-	Player_card_4->Image = nullptr; Player_card_4->ResetText();
-	Player_card_5->Image = nullptr; Player_card_5->ResetText();
-	Player_card_6->Image = nullptr; Player_card_6->ResetText();
-	Player_card_7->Image = nullptr; Player_card_7->ResetText();
-	Player_card_8->Image = nullptr; Player_card_8->ResetText();
-	Player_card_9->Image = nullptr; Player_card_9->ResetText();
-	Player_card_10->Image = nullptr; Player_card_10->ResetText();
-	Player_card_11->Image = nullptr; Player_card_11->ResetText();
-	Player_card_12->Image = nullptr; Player_card_12->ResetText();
-	Player_card_13->Image = nullptr; Player_card_13->ResetText();
-	Player_card_14->Image = nullptr; Player_card_14->ResetText();
-	Player_card_15->Image = nullptr; Player_card_15->ResetText();
-	Player_card_16->Image = nullptr; Player_card_16->ResetText();
-	Player_card_17->Image = nullptr; Player_card_17->ResetText();
-	Player_card_18->Image = nullptr; Player_card_18->ResetText();
-	Player_card_19->Image = nullptr; Player_card_19->ResetText();
-	Player_card_20->Image = nullptr; Player_card_20->ResetText();
-
-	if (player_cards_in_storage.size() == 0)
-		return;
-
-	std::vector<std::pair<card_suit, int>> player_cards_temp = player_cards_in_storage;
-	player_cards_in_storage.clear();
-
-	for (const auto& card : player_cards_temp)
-	{
-		place_player_card_in_storage(card);
-	}
 }
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::give_cards_to_the_player()
 {
 	while (player_cards_in_storage.size() < 6)
 	{
-		std::pair<card_suit, int> player_card;
+		std::pair<card_methods::card_suit, int> player_card;
 
 		if (get_card_from_desc(player_card))
 		{
@@ -991,22 +945,257 @@ void FoolGame::MyForm::give_cards_to_the_player()
 	}
 }
 //-----------------------------------------------------------------------------------------
+void FoolGame::MyForm::update_player_cards()
+{
+	Player_card_1->Image = nullptr; Player_card_1->ResetText(); Player_card_1->Refresh();
+	Player_card_2->Image = nullptr; Player_card_2->ResetText(); Player_card_2->Refresh();
+	Player_card_3->Image = nullptr; Player_card_3->ResetText(); Player_card_3->Refresh();
+	Player_card_4->Image = nullptr; Player_card_4->ResetText(); Player_card_4->Refresh();
+	Player_card_5->Image = nullptr; Player_card_5->ResetText(); Player_card_5->Refresh();
+	Player_card_6->Image = nullptr; Player_card_6->ResetText(); Player_card_6->Refresh();
+	Player_card_7->Image = nullptr; Player_card_7->ResetText(); Player_card_7->Refresh();
+	Player_card_8->Image = nullptr; Player_card_8->ResetText(); Player_card_8->Refresh();
+	Player_card_9->Image = nullptr; Player_card_9->ResetText(); Player_card_9->Refresh();
+	Player_card_10->Image = nullptr; Player_card_10->ResetText(); Player_card_10->Refresh();
+	Player_card_11->Image = nullptr; Player_card_11->ResetText(); Player_card_11->Refresh();
+	Player_card_12->Image = nullptr; Player_card_12->ResetText(); Player_card_12->Refresh();
+	Player_card_13->Image = nullptr; Player_card_13->ResetText(); Player_card_13->Refresh();
+	Player_card_14->Image = nullptr; Player_card_14->ResetText(); Player_card_14->Refresh();
+	Player_card_15->Image = nullptr; Player_card_15->ResetText(); Player_card_15->Refresh();
+	Player_card_16->Image = nullptr; Player_card_16->ResetText(); Player_card_16->Refresh();
+	Player_card_17->Image = nullptr; Player_card_17->ResetText(); Player_card_17->Refresh();
+	Player_card_18->Image = nullptr; Player_card_18->ResetText(); Player_card_18->Refresh();
+	Player_card_19->Image = nullptr; Player_card_19->ResetText(); Player_card_19->Refresh();
+	Player_card_20->Image = nullptr; Player_card_20->ResetText(); Player_card_20->Refresh();
+
+	if (player_cards_in_storage.size() == 0)
+		return;
+
+	std::vector<std::pair<card_methods::card_suit, int>> player_cards_temp = player_cards_in_storage;
+	player_cards_in_storage.clear();
+
+	for (const auto& card : player_cards_temp)
+	{
+		place_player_card_in_storage(card);
+	}
+}
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::give_cards_to_the_computer()
 {
 	while (computer_cards_in_storage.size() < 6)
 	{
-		std::pair<card_suit, int> computer_card;
+		std::pair<card_methods::card_suit, int> computer_card;
 
 		if (get_card_from_desc(computer_card))
-		{
 			computer_cards_in_storage.push_back(computer_card);
-		}
 		else
-			return;
+			break;
+	}
+
+	card_methods::sort_cards(computer_cards_in_storage, trump_suit);
+}
+//-----------------------------------------------------------------------------------------
+void FoolGame::MyForm::determine_the_turn_of_the_move()
+{
+	/*if (card_methods::get_random_int(1, 10) > 5)
+	{
+		players_turn = true;
+		players_current_turn = true;
+		this->Label->Text = L"     YOUR MOVE   ";
+	}
+	else*/
+	{
+		players_turn = false;
+		players_current_turn = false;
+		Label->Text = L"  OPPONENT'S MOVE  ";
+		Label->Refresh();
 	}
 }
 //-----------------------------------------------------------------------------------------
-bool FoolGame::MyForm::is_card_a_trump(const std::pair<card_suit, int>& card)
+void FoolGame::MyForm::computer_intelligence()
+{
+
+	Sleep(1000);
+
+	if (players_current_turn)
+		return;
+
+	if (!players_turn)
+	{
+		
+		computer_attacks();
+	}
+
+
+
+
+
+
+}
+//-----------------------------------------------------------------------------------------
+void FoolGame::MyForm::computer_attacks()
+{
+
+	if (battleground_field_is_clear())
+	{
+		if (!place_card_in_battleground_field(computer_cards_in_storage.front(), false))
+			return;
+
+		computer_cards_in_storage.erase(computer_cards_in_storage.begin());
+
+		players_current_turn = true;
+		this->Label->Text = L"     YOUR MOVE   ";
+
+		return;
+	}
+
+	std::pair<card_methods::card_suit, int> card_to_attack;
+
+	if (!card_methods::find_card_to_attack(cards_in_battleground, computer_cards_in_storage, trump_suit, card_to_attack))
+	{
+		//finished
+		Label->Text = L"  FINISHED  ";
+		Label->Refresh();
+		int a = 5;
+
+
+	}
+	else
+	{
+		place_card_in_battleground_field(card_to_attack, false);
+
+		auto it = std::find(computer_cards_in_storage.begin(), computer_cards_in_storage.end(), card_to_attack);
+		if (it != computer_cards_in_storage.end())
+			computer_cards_in_storage.erase(it);
+		else
+			return;
+
+
+		players_current_turn = true;
+		this->Label->Text = L"     YOUR MOVE   ";
+
+		return;
+	}
+
+
+
+
+
+
+
+
+
+
+}
+//-----------------------------------------------------------------------------------------
+void FoolGame::MyForm::computer_protects(std::pair<card_methods::card_suit, int>& card)
+{
+	
+}
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+bool FoolGame::MyForm::place_card_in_battleground_field(const std::pair<card_methods::card_suit, int>& card, const bool& is_players_card)
+{
+	PictureBox^ card_place_in_battleground;
+
+	switch (cards_in_battleground.size())
+	{
+	case 0:
+	case 1:
+		if (!is_players_card)
+			card_place_in_battleground = battleground_1;
+		else
+			card_place_in_battleground = battleground_2;
+		break;
+	case 2:
+	case 3:
+		if (!is_players_card)
+			card_place_in_battleground = battleground_3;
+		else
+			card_place_in_battleground = battleground_4;
+		break;
+	case 4:
+	case 5:
+		if (!is_players_card)
+			card_place_in_battleground = battleground_5;
+		else
+			card_place_in_battleground = battleground_6;
+		break;
+	case 6:
+	case 7:
+		if (!is_players_card)
+			card_place_in_battleground = battleground_7;
+		else
+			card_place_in_battleground = battleground_8;
+		break;
+	case 8:
+	case 9:
+		if (!is_players_card)
+			card_place_in_battleground = battleground_9;
+		else
+			card_place_in_battleground = battleground_10;
+		break;
+	case 10:
+	case 11:
+		if (!is_players_card)
+			card_place_in_battleground = battleground_11;
+		else
+			card_place_in_battleground = battleground_12;
+		break;
+	default:
+		return false;
+	}
+
+
+	// unlikely
+	String^ way_to_card;
+	if (!card_methods::load_card_image(card, way_to_card))
+		return false;
+
+	// unlikely
+	String^ card_indx;
+	if (!card_methods::index_by_card(card_indx, card))
+		return false;
+
+	cards_in_battleground.push_back(card);
+	card_place_in_battleground->Image = Image::FromFile(way_to_card);
+	card_place_in_battleground->Text = card_indx;
+	card_place_in_battleground->Refresh();
+	return true;
+}
+//-----------------------------------------------------------------------------------------
+void FoolGame::MyForm::take_cards_from_battleground_field(std::vector<std::pair<card_methods::card_suit, int>>& cards, const bool& is_players_card)
+{
+	battleground_1->Image = nullptr; battleground_1->ResetText();
+	battleground_2->Image = nullptr; battleground_2->ResetText();
+	battleground_3->Image = nullptr; battleground_3->ResetText();
+	battleground_4->Image = nullptr; battleground_4->ResetText();
+	battleground_5->Image = nullptr; battleground_5->ResetText();
+	battleground_6->Image = nullptr; battleground_6->ResetText();
+	battleground_7->Image = nullptr; battleground_7->ResetText();
+	battleground_8->Image = nullptr; battleground_8->ResetText();
+	battleground_9->Image = nullptr; battleground_9->ResetText();
+	battleground_10->Image = nullptr; battleground_10->ResetText();
+	battleground_11->Image = nullptr; battleground_11->ResetText();
+	battleground_12->Image = nullptr; battleground_12->ResetText();
+
+	for (const auto& card : cards_in_battleground)
+	{
+		cards.push_back(card);
+	}
+
+	cards_in_battleground.clear();
+}
+//-----------------------------------------------------------------------------------------
+bool FoolGame::MyForm::battleground_field_is_clear()
+{
+	return cards_in_battleground.size() == 0;
+}
+//-----------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------
+bool FoolGame::MyForm::is_card_a_trump(const std::pair<card_methods::card_suit, int>& card)
 {
 	return (trump_suit == card.first);
 }
