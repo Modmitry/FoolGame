@@ -47,8 +47,8 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_18 = (gcnew System::Windows::Forms::PictureBox());
 	this->Player_card_19 = (gcnew System::Windows::Forms::PictureBox());
 	this->Player_card_20 = (gcnew System::Windows::Forms::PictureBox());
-	this->button1 = (gcnew System::Windows::Forms::Button());
-	this->button2 = (gcnew System::Windows::Forms::Button());
+	this->finished__take_cards_button = (gcnew System::Windows::Forms::Button());
+	this->sort_cards_button = (gcnew System::Windows::Forms::Button());
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_1))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_2))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_3))->BeginInit();
@@ -90,15 +90,15 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	this->play_button->Location = System::Drawing::Point(22, 21);
 	this->play_button->Name = L"play_button";
-	this->play_button->Size = System::Drawing::Size(95, 30);
+	this->play_button->Size = System::Drawing::Size(95, 56);
 	this->play_button->TabIndex = 0;
 	this->play_button->Text = L"PlayGame";
 	this->play_button->UseVisualStyleBackColor = true;
-	this->play_button->Click += gcnew System::EventHandler(this, &MyForm::Play_Click);
+	this->play_button->Click += gcnew System::EventHandler(this, &MyForm::Play_Game_Click);
 	// 
 	// battleground_1
 	// 
-	this->battleground_1->Location = System::Drawing::Point(407, 193);
+	this->battleground_1->Location = System::Drawing::Point(536, 182);
 	this->battleground_1->Name = L"battleground_1";
 	this->battleground_1->Size = System::Drawing::Size(100, 143);
 	this->battleground_1->TabIndex = 2;
@@ -106,7 +106,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// battleground_2
 	// 
-	this->battleground_2->Location = System::Drawing::Point(407, 274);
+	this->battleground_2->Location = System::Drawing::Point(536, 274);
 	this->battleground_2->Name = L"battleground_2";
 	this->battleground_2->Size = System::Drawing::Size(100, 143);
 	this->battleground_2->TabIndex = 3;
@@ -114,7 +114,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// battleground_3
 	// 
-	this->battleground_3->Location = System::Drawing::Point(536, 193);
+	this->battleground_3->Location = System::Drawing::Point(664, 182);
 	this->battleground_3->Name = L"battleground_3";
 	this->battleground_3->Size = System::Drawing::Size(100, 143);
 	this->battleground_3->TabIndex = 4;
@@ -122,7 +122,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// battleground_4
 	// 
-	this->battleground_4->Location = System::Drawing::Point(536, 274);
+	this->battleground_4->Location = System::Drawing::Point(664, 274);
 	this->battleground_4->Name = L"battleground_4";
 	this->battleground_4->Size = System::Drawing::Size(100, 143);
 	this->battleground_4->TabIndex = 5;
@@ -130,7 +130,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// battleground_5
 	// 
-	this->battleground_5->Location = System::Drawing::Point(664, 193);
+	this->battleground_5->Location = System::Drawing::Point(791, 182);
 	this->battleground_5->Name = L"battleground_5";
 	this->battleground_5->Size = System::Drawing::Size(100, 143);
 	this->battleground_5->TabIndex = 6;
@@ -138,7 +138,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// battleground_6
 	// 
-	this->battleground_6->Location = System::Drawing::Point(664, 274);
+	this->battleground_6->Location = System::Drawing::Point(791, 274);
 	this->battleground_6->Name = L"battleground_6";
 	this->battleground_6->Size = System::Drawing::Size(100, 143);
 	this->battleground_6->TabIndex = 7;
@@ -146,7 +146,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// battleground_7
 	// 
-	this->battleground_7->Location = System::Drawing::Point(791, 193);
+	this->battleground_7->Location = System::Drawing::Point(917, 182);
 	this->battleground_7->Name = L"battleground_7";
 	this->battleground_7->Size = System::Drawing::Size(100, 143);
 	this->battleground_7->TabIndex = 8;
@@ -154,7 +154,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// battleground_8
 	// 
-	this->battleground_8->Location = System::Drawing::Point(791, 274);
+	this->battleground_8->Location = System::Drawing::Point(917, 274);
 	this->battleground_8->Name = L"battleground_8";
 	this->battleground_8->Size = System::Drawing::Size(100, 143);
 	this->battleground_8->TabIndex = 9;
@@ -162,7 +162,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// battleground_9
 	// 
-	this->battleground_9->Location = System::Drawing::Point(917, 193);
+	this->battleground_9->Location = System::Drawing::Point(1045, 182);
 	this->battleground_9->Name = L"battleground_9";
 	this->battleground_9->Size = System::Drawing::Size(100, 143);
 	this->battleground_9->TabIndex = 10;
@@ -170,7 +170,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// battleground_10
 	// 
-	this->battleground_10->Location = System::Drawing::Point(917, 274);
+	this->battleground_10->Location = System::Drawing::Point(1045, 274);
 	this->battleground_10->Name = L"battleground_10";
 	this->battleground_10->Size = System::Drawing::Size(100, 143);
 	this->battleground_10->TabIndex = 11;
@@ -178,7 +178,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// battleground_11
 	// 
-	this->battleground_11->Location = System::Drawing::Point(1045, 193);
+	this->battleground_11->Location = System::Drawing::Point(1172, 182);
 	this->battleground_11->Name = L"battleground_11";
 	this->battleground_11->Size = System::Drawing::Size(100, 143);
 	this->battleground_11->TabIndex = 12;
@@ -186,7 +186,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// battleground_12
 	// 
-	this->battleground_12->Location = System::Drawing::Point(1045, 274);
+	this->battleground_12->Location = System::Drawing::Point(1172, 274);
 	this->battleground_12->Name = L"battleground_12";
 	this->battleground_12->Size = System::Drawing::Size(100, 143);
 	this->battleground_12->TabIndex = 13;
@@ -202,7 +202,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Trupm_card
 	// 
-	this->Trupm_card->Location = System::Drawing::Point(101, 193);
+	this->Trupm_card->Location = System::Drawing::Point(86, 193);
 	this->Trupm_card->Name = L"Trupm_card";
 	this->Trupm_card->Size = System::Drawing::Size(100, 143);
 	this->Trupm_card->TabIndex = 15;
@@ -210,7 +210,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Cards_in_the_desk
 	// 
-	this->Cards_in_the_desk->Location = System::Drawing::Point(73, 288);
+	this->Cards_in_the_desk->Location = System::Drawing::Point(56, 264);
 	this->Cards_in_the_desk->Name = L"Cards_in_the_desk";
 	this->Cards_in_the_desk->Size = System::Drawing::Size(158, 101);
 	this->Cards_in_the_desk->TabIndex = 16;
@@ -277,6 +277,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_7->Size = System::Drawing::Size(100, 143);
 	this->Player_card_7->TabIndex = 22;
 	this->Player_card_7->TabStop = false;
+	this->Player_card_7->Click += gcnew System::EventHandler(this, &MyForm::Player_card_7_Click);
 	// 
 	// Player_card_8
 	// 
@@ -285,6 +286,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_8->Size = System::Drawing::Size(100, 143);
 	this->Player_card_8->TabIndex = 23;
 	this->Player_card_8->TabStop = false;
+	this->Player_card_8->Click += gcnew System::EventHandler(this, &MyForm::Player_card_8_Click);
 	// 
 	// Player_card_9
 	// 
@@ -293,6 +295,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_9->Size = System::Drawing::Size(100, 143);
 	this->Player_card_9->TabIndex = 24;
 	this->Player_card_9->TabStop = false;
+	this->Player_card_9->Click += gcnew System::EventHandler(this, &MyForm::Player_card_9_Click);
 	// 
 	// Player_card_10
 	// 
@@ -301,6 +304,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_10->Size = System::Drawing::Size(100, 143);
 	this->Player_card_10->TabIndex = 26;
 	this->Player_card_10->TabStop = false;
+	this->Player_card_10->Click += gcnew System::EventHandler(this, &MyForm::Player_card_10_Click);
 	// 
 	// Player_card_11
 	// 
@@ -309,6 +313,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_11->Size = System::Drawing::Size(100, 143);
 	this->Player_card_11->TabIndex = 27;
 	this->Player_card_11->TabStop = false;
+	this->Player_card_11->Click += gcnew System::EventHandler(this, &MyForm::Player_card_11_Click);
 	// 
 	// Player_card_12
 	// 
@@ -317,6 +322,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_12->Size = System::Drawing::Size(100, 143);
 	this->Player_card_12->TabIndex = 28;
 	this->Player_card_12->TabStop = false;
+	this->Player_card_12->Click += gcnew System::EventHandler(this, &MyForm::Player_card_12_Click);
 	// 
 	// Player_card_13
 	// 
@@ -325,6 +331,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_13->Size = System::Drawing::Size(100, 143);
 	this->Player_card_13->TabIndex = 29;
 	this->Player_card_13->TabStop = false;
+	this->Player_card_13->Click += gcnew System::EventHandler(this, &MyForm::Player_card_13_Click);
 	// 
 	// Player_card_14
 	// 
@@ -333,6 +340,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_14->Size = System::Drawing::Size(100, 143);
 	this->Player_card_14->TabIndex = 30;
 	this->Player_card_14->TabStop = false;
+	this->Player_card_14->Click += gcnew System::EventHandler(this, &MyForm::Player_card_14_Click);
 	// 
 	// Player_card_15
 	// 
@@ -341,6 +349,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_15->Size = System::Drawing::Size(100, 143);
 	this->Player_card_15->TabIndex = 31;
 	this->Player_card_15->TabStop = false;
+	this->Player_card_15->Click += gcnew System::EventHandler(this, &MyForm::Player_card_15_Click);
 	// 
 	// Player_card_16
 	// 
@@ -349,6 +358,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_16->Size = System::Drawing::Size(100, 143);
 	this->Player_card_16->TabIndex = 32;
 	this->Player_card_16->TabStop = false;
+	this->Player_card_16->Click += gcnew System::EventHandler(this, &MyForm::Player_card_16_Click);
 	// 
 	// Player_card_17
 	// 
@@ -357,6 +367,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_17->Size = System::Drawing::Size(100, 143);
 	this->Player_card_17->TabIndex = 33;
 	this->Player_card_17->TabStop = false;
+	this->Player_card_17->Click += gcnew System::EventHandler(this, &MyForm::Player_card_17_Click);
 	// 
 	// Player_card_18
 	// 
@@ -365,6 +376,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_18->Size = System::Drawing::Size(100, 143);
 	this->Player_card_18->TabIndex = 34;
 	this->Player_card_18->TabStop = false;
+	this->Player_card_18->Click += gcnew System::EventHandler(this, &MyForm::Player_card_18_Click);
 	// 
 	// Player_card_19
 	// 
@@ -373,6 +385,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_19->Size = System::Drawing::Size(100, 143);
 	this->Player_card_19->TabIndex = 35;
 	this->Player_card_19->TabStop = false;
+	this->Player_card_19->Click += gcnew System::EventHandler(this, &MyForm::Player_card_19_Click);
 	// 
 	// Player_card_20
 	// 
@@ -381,26 +394,27 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_20->Size = System::Drawing::Size(100, 143);
 	this->Player_card_20->TabIndex = 36;
 	this->Player_card_20->TabStop = false;
+	this->Player_card_20->Click += gcnew System::EventHandler(this, &MyForm::Player_card_20_Click);
 	// 
-	// button1
+	// finished__take_cards_button
 	// 
-	this->button1->Location = System::Drawing::Point(266, 27);
-	this->button1->Name = L"button1";
-	this->button1->Size = System::Drawing::Size(147, 50);
-	this->button1->TabIndex = 37;
-	this->button1->Text = L"button1";
-	this->button1->UseVisualStyleBackColor = true;
-	this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+	this->finished__take_cards_button->Location = System::Drawing::Point(133, 21);
+	this->finished__take_cards_button->Name = L"finished__take_cards_button";
+	this->finished__take_cards_button->Size = System::Drawing::Size(95, 56);
+	this->finished__take_cards_button->TabIndex = 37;
+	this->finished__take_cards_button->Text = L"Finished/Pick up cards";
+	this->finished__take_cards_button->UseVisualStyleBackColor = true;
+	this->finished__take_cards_button->Click += gcnew System::EventHandler(this, &MyForm::finished__take_cards_button_Click);
 	// 
-	// button2
+	// sort_cards_button
 	// 
-	this->button2->Location = System::Drawing::Point(468, 54);
-	this->button2->Name = L"button2";
-	this->button2->Size = System::Drawing::Size(196, 23);
-	this->button2->TabIndex = 38;
-	this->button2->Text = L"button2";
-	this->button2->UseVisualStyleBackColor = true;
-	this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+	this->sort_cards_button->Location = System::Drawing::Point(246, 21);
+	this->sort_cards_button->Name = L"sort_cards_button";
+	this->sort_cards_button->Size = System::Drawing::Size(95, 56);
+	this->sort_cards_button->TabIndex = 38;
+	this->sort_cards_button->Text = L"Sort cards";
+	this->sort_cards_button->UseVisualStyleBackColor = true;
+	this->sort_cards_button->Click += gcnew System::EventHandler(this, &MyForm::sort_cards_button_Click);
 	// 
 	// MyForm
 	// 
@@ -408,8 +422,8 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 	this->BackColor = System::Drawing::SystemColors::ScrollBar;
 	this->ClientSize = System::Drawing::Size(1298, 760);
-	this->Controls->Add(this->button2);
-	this->Controls->Add(this->button1);
+	this->Controls->Add(this->sort_cards_button);
+	this->Controls->Add(this->finished__take_cards_button);
 	this->Controls->Add(this->Player_card_20);
 	this->Controls->Add(this->Player_card_19);
 	this->Controls->Add(this->Player_card_18);
@@ -487,11 +501,143 @@ void FoolGame::MyForm::InitializeComponent(void)
 
 }
 //-----------------------------------------------------------------------------------------
-System::Void FoolGame::MyForm::Play_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void FoolGame::MyForm::Player_card_1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (!Player_card_1->Image)
+		return;
+
+	std::pair<card_suit, int> card;
+	if (!card_methods::card_by_index(card, Player_card_1->Text))
+		return;
+
+	if (!place_player_card_in_field(card))
+		return;
+
+
+	auto it = std::find(player_cards_in_storage.begin(), player_cards_in_storage.end(), card);
+	if (it != player_cards_in_storage.end())
+		player_cards_in_storage.erase(it);
+	else
+		return;
+
+	update_player_cards();
+}
+//-----------------------------------------------------------------------------------------
+System::Void  FoolGame::MyForm::Player_card_2_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	random_distribution_of_cards();
 
 }
+//-----------------------------------------------------------------------------------------
+System::Void  FoolGame::MyForm::Player_card_3_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void  FoolGame::MyForm::Player_card_4_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void  FoolGame::MyForm::Player_card_5_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void  FoolGame::MyForm::Player_card_6_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_7_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_8_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_9_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_10_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_11_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_12_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_13_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_14_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_15_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_16_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_17_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_18_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_19_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_20_Click(System::Object^ sender, System::EventArgs^ e)
+{
+
+}
+//-----------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Play_Game_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	// 1 step. Getting the trump card and random put cards in the desk
+	random_distribution_of_cards();
+
+	// 2 step. Give cards to player
+	give_cards_to_the_player();
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::finished__take_cards_button_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::sort_cards_button_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	
+}
+//-----------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::random_distribution_of_cards()
 {
@@ -616,16 +762,6 @@ bool FoolGame::MyForm::get_card_from_desc(std::pair<card_suit, int>& card)
 	return true;
 }
 //-----------------------------------------------------------------------------------------
-bool FoolGame::MyForm::take_card_for_player(const std::pair<card_suit, int>& card)
-{
-	PictureBox^ card_place;
-	if (!place_player_card_in_storage(card))
-		return false;
-
-	player_cards_in_storage.push_back(card);
-	return true;
-}
-//-----------------------------------------------------------------------------------------
 bool FoolGame::MyForm::place_player_card_in_storage(const std::pair<card_suit, int>& card)
 {
 	PictureBox^ card_place_in_storage;
@@ -706,6 +842,8 @@ bool FoolGame::MyForm::place_player_card_in_storage(const std::pair<card_suit, i
 	if (!card_methods::index_by_card(card_indx, card))
 		return false;
 
+
+	player_cards_in_storage.push_back(card);
 	card_place_in_storage->Image = Image::FromFile(way_to_card);
 	card_place_in_storage->Text = card_indx;
 
@@ -745,26 +883,61 @@ bool FoolGame::MyForm::place_player_card_in_field(const std::pair<card_suit, int
 	if (!card_methods::load_card_image(card, way_to_card))
 		return false;
 
-
+	player_cards_in_battleground.push_back(card);
 	card_place_in_battleground->Image = Image::FromFile(way_to_card);
 	return true;
 }
 //-----------------------------------------------------------------------------------------
-bool FoolGame::MyForm::make_a_move(const std::pair<card_suit, int>& card)
+void FoolGame::MyForm::update_player_cards()
 {
-	for (auto& player_card : player_cards_in_storage)
-	{
-		if (player_card == card)
-		{
-			// 2 4 6 8 10 12 - fields for player
-			if (!place_player_card_in_field(card))
-				return false;
-			else
-				return true;
-		}
-	}
+	Player_card_1->Image = nullptr; Player_card_1->ResetText();
+	Player_card_2->Image = nullptr; Player_card_2->ResetText();
+	Player_card_3->Image = nullptr; Player_card_3->ResetText();
+	Player_card_4->Image = nullptr; Player_card_4->ResetText();
+	Player_card_5->Image = nullptr; Player_card_5->ResetText();
+	Player_card_6->Image = nullptr; Player_card_6->ResetText();
+	Player_card_7->Image = nullptr; Player_card_7->ResetText();
+	Player_card_8->Image = nullptr; Player_card_8->ResetText();
+	Player_card_9->Image = nullptr; Player_card_9->ResetText();
+	Player_card_10->Image = nullptr; Player_card_10->ResetText();
+	Player_card_11->Image = nullptr; Player_card_11->ResetText();
+	Player_card_12->Image = nullptr; Player_card_12->ResetText();
+	Player_card_13->Image = nullptr; Player_card_13->ResetText();
+	Player_card_14->Image = nullptr; Player_card_14->ResetText();
+	Player_card_15->Image = nullptr; Player_card_15->ResetText();
+	Player_card_16->Image = nullptr; Player_card_16->ResetText();
+	Player_card_17->Image = nullptr; Player_card_17->ResetText();
+	Player_card_18->Image = nullptr; Player_card_18->ResetText();
+	Player_card_19->Image = nullptr; Player_card_19->ResetText();
+	Player_card_20->Image = nullptr; Player_card_20->ResetText();
 
-	return false;
+	if (player_cards_in_storage.size() == 0)
+		return;
+
+	std::vector<std::pair<card_suit, int>> player_cards_temp = player_cards_in_storage;
+	player_cards_in_storage.clear();
+
+	for (const auto& card : player_cards_temp)
+	{
+		place_player_card_in_storage(card);
+	}
+}
+//-----------------------------------------------------------------------------------------
+void FoolGame::MyForm::give_cards_to_the_player()
+{
+	while (player_cards_in_storage.size() < 6)
+	{
+		std::pair<card_suit, int> player_card;
+
+		if (get_card_from_desc(player_card))
+		{
+			if (!place_player_card_in_storage(player_card))
+				return;
+		}
+		else
+			return;
+
+	}
 }
 //-----------------------------------------------------------------------------------------
 bool FoolGame::MyForm::is_card_a_trump(const std::pair<card_suit, int>& card)

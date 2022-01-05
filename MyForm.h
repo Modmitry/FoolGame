@@ -45,8 +45,15 @@ namespace FoolGame {
 				delete components;
 			}
 		}
-	// fields for cards
-	private: System::Windows::Forms::Button^ play_button;
+	// FIELDS FOR CARDS
+	
+	// fields for card desk
+	private: System::Windows::Forms::PictureBox^ Trupm_card;
+	private: System::Windows::Forms::PictureBox^ Cards_in_the_desk;
+
+// field for Computer player's cards
+	private: System::Windows::Forms::PictureBox^ Computer_player_cards;
+
 	private: System::Windows::Forms::PictureBox^ battleground_1;
 	private: System::Windows::Forms::PictureBox^ battleground_2;
 	private: System::Windows::Forms::PictureBox^ battleground_3;
@@ -59,9 +66,8 @@ namespace FoolGame {
 	private: System::Windows::Forms::PictureBox^ battleground_10;
 	private: System::Windows::Forms::PictureBox^ battleground_11;
 	private: System::Windows::Forms::PictureBox^ battleground_12;
-	private: System::Windows::Forms::PictureBox^ Computer_player_cards;
-	private: System::Windows::Forms::PictureBox^ Trupm_card;
-	private: System::Windows::Forms::PictureBox^ Cards_in_the_desk;
+
+	// field for player's cards
 	private: System::Windows::Forms::PictureBox^ Player_card_1;
 	private: System::Windows::Forms::PictureBox^ Player_card_2;
 	private: System::Windows::Forms::PictureBox^ Player_card_3;
@@ -82,24 +88,50 @@ namespace FoolGame {
 	private: System::Windows::Forms::PictureBox^ Player_card_18;
 	private: System::Windows::Forms::PictureBox^ Player_card_19;
 	private: System::Windows::Forms::PictureBox^ Player_card_20;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
 
-	private:
-		/// Required designer variable.
-		System::ComponentModel::Container ^components;
+	// buttons
+	private: System::Windows::Forms::Button^ play_button;
+	private: System::Windows::Forms::Button^ finished__take_cards_button;
+	private: System::Windows::Forms::Button^ sort_cards_button;
+
+	/// Required designer variable.
+	private: System::ComponentModel::Container ^components;
 
 
 #pragma region Windows Form Designer generated code
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
-		void InitializeComponent(void);
+	void InitializeComponent(void);
 		
 #pragma endregion
 
-	private: 
-		
-	System::Void Play_Click(System::Object^ sender, System::EventArgs^ e);
+	// card clicks
+	private: System::Void Player_card_1_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_2_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_3_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_4_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_5_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_6_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_7_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_8_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_9_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_10_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_11_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_12_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_13_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_14_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_15_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_16_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_17_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_18_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_19_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_20_Click(System::Object^ sender, System::EventArgs^ e);
+
+	// button clicks
+	private: System::Void Play_Game_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void finished__take_cards_button_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void sort_cards_button_Click(System::Object^ sender, System::EventArgs^ e); 
+
 
 
 	// methods for card deck 
@@ -108,10 +140,11 @@ namespace FoolGame {
 	//
 
 	// methods for player
-	bool take_card_for_player(const std::pair<card_suit, int>& card);
 	bool place_player_card_in_storage(const std::pair<card_suit, int>& card);
 	bool place_player_card_in_field(const std::pair<card_suit, int>& card);
-	bool make_a_move(const std::pair<card_suit, int>& card);
+	void update_player_cards();
+
+	void give_cards_to_the_player();
 	
 
 
@@ -119,62 +152,13 @@ namespace FoolGame {
 	bool is_card_a_trump(const std::pair<card_suit, int>& card);
 
 
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		std::pair<card_suit, int> card1;
-		get_card_from_desc(card1);
-
-		bool alpha = take_card_for_player(card1);
-
-	}
+	
 		  
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	
 
 
 
-	}
-private: System::Void Player_card_1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	if (!Player_card_1->Image)
-		return;
 
-	String^ card_indx = Player_card_1->Text;
-
-	std::pair<card_suit, int> card;
-
-	if (!card_methods::card_by_index(card, card_indx))
-		return;
-	//String^ way;
-	//card_methods::load_card_image12(card,way);
-
-	//int ac12 = Player_card_1->
-}
-private: System::Void Player_card_2_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	if (!Player_card_2->Image)
-		return;
-
-}
-private: System::Void Player_card_3_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	if (!Player_card_3->Image)
-		return;
-}
-private: System::Void Player_card_4_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	if (!Player_card_4->Image)
-		return;
-}
-private: System::Void Player_card_5_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	if (!Player_card_5->Image)
-		return;
-
-}
-private: System::Void Player_card_6_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	if (!Player_card_6->Image)
-		return;
-}
 };
 }
