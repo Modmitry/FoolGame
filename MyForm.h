@@ -5,19 +5,23 @@
 // members for card deck
 std::stack<std::pair<card_methods::card_suit,int>> desc_cards;
 card_methods::card_suit trump_suit;
+
+std::vector<std::pair<card_methods::card_suit, int>> broken_cards;
 //
+
 // members for player
 std::vector<std::pair<card_methods::card_suit, int>> player_cards_in_storage;
 bool players_turn = false;
 bool players_current_turn = false;
 //
+
 // members for computer opponent
 std::vector<std::pair<card_methods::card_suit, int>> computer_cards_in_storage;
 //
-// members battleground cards
+ 
+// members battleground field
 std::vector<std::pair<card_methods::card_suit, int>> cards_in_battleground;
 //
-
 
 
 namespace FoolGame {
@@ -55,6 +59,7 @@ namespace FoolGame {
 	// fields for card desk
 	private: System::Windows::Forms::PictureBox^ Trupm_card;
 	private: System::Windows::Forms::PictureBox^ Cards_in_the_desk;
+	private: System::Windows::Forms::PictureBox^ Broken_card;
 
 // field for Computer player's cards
 	private: System::Windows::Forms::PictureBox^ Computer_player_cards;
@@ -100,7 +105,7 @@ namespace FoolGame {
 	private: System::Windows::Forms::Button^ sort_cards_button;
 	// label
 	private: System::Windows::Forms::Label^ Label;
-
+	private: System::Windows::Forms::Label^ label1;
 
 
 	/// Required designer variable.
@@ -146,27 +151,32 @@ namespace FoolGame {
 
 	// methods for card deck 
 	void random_distribution_of_cards();	
+	void determine_the_turn_of_the_move();
 	bool get_card_from_desc(std::pair<card_methods::card_suit, int>& card);
+	void clear_all();  // if you want to restart game
+	void finished_round(); // if computer or player want to end current round
 	//
 
 	// methods for player
 	bool place_player_card_in_storage(const std::pair<card_methods::card_suit, int>& card);
 	void give_cards_to_the_player();
 	void update_player_cards();
+	void clear_player_card_field();
 	//
 
 	// methods for computer opponent
 	void give_cards_to_the_computer();
-	void determine_the_turn_of_the_move();
 	void computer_intelligence();
 	void computer_attacks();
 	void computer_protects(std::pair<card_methods::card_suit, int>& card);
+	void debugFunc__show_cards();
 	//
 
-	// methods battleground cards
-	bool place_card_in_battleground_field(const std::pair<card_methods::card_suit, int>& card, const bool& is_players_card);
-	void take_cards_from_battleground_field(std::vector<std::pair<card_methods::card_suit, int>>& cards, const bool& is_players_card);
-	bool battleground_field_is_clear();
+	// methods battleground field
+	bool move_card_in_battleground_field(const std::pair<card_methods::card_suit, int>& card, const bool& is_players_card);
+	void move_cards_from_battleground_field(const bool& is_players_card);
+	void clear_battleground_field();
+
 
 
 	bool is_card_a_trump(const std::pair<card_methods::card_suit, int>& card);
