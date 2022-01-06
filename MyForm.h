@@ -5,13 +5,12 @@
 // members for card deck
 std::stack<std::pair<card_methods::card_suit,int>> desc_cards;
 card_methods::card_suit trump_suit;
-
 std::vector<std::pair<card_methods::card_suit, int>> broken_cards;
 //
 
 // members for player
 std::vector<std::pair<card_methods::card_suit, int>> player_cards_in_storage;
-bool players_turn = false;
+bool players_attack = false;
 bool players_current_turn = false;
 //
 
@@ -61,9 +60,10 @@ namespace FoolGame {
 	private: System::Windows::Forms::PictureBox^ Cards_in_the_desk;
 	private: System::Windows::Forms::PictureBox^ Broken_card;
 
-// field for Computer player's cards
+	// field for Computer player's cards
 	private: System::Windows::Forms::PictureBox^ Computer_player_cards;
 
+	// battleground fields
 	private: System::Windows::Forms::PictureBox^ battleground_1;
 	private: System::Windows::Forms::PictureBox^ battleground_2;
 	private: System::Windows::Forms::PictureBox^ battleground_3;
@@ -102,10 +102,9 @@ namespace FoolGame {
 	// buttons
 	private: System::Windows::Forms::Button^ play_button;
 	private: System::Windows::Forms::Button^ finished__take_cards_button;
-	private: System::Windows::Forms::Button^ sort_cards_button;
-	// label
+	// labels
 	private: System::Windows::Forms::Label^ Label;
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ Label2;
 
 
 	/// Required designer variable.
@@ -145,9 +144,6 @@ namespace FoolGame {
 	// button clicks
 	private: System::Void Play_Game_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void finished_or_take_cards_button_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void sort_cards_button_Click(System::Object^ sender, System::EventArgs^ e); 
-
-
 
 	// methods for card deck 
 	void random_distribution_of_cards();	
@@ -163,15 +159,16 @@ namespace FoolGame {
 	void update_player_cards();
 	void clear_player_card_field();
 	bool determine_right_card(const std::pair<card_methods::card_suit, int>& card);
-	// if  1 card > 2 card return true, else return false
-	bool card_comparison(const std::pair<card_methods::card_suit, int>& card_1, const std::pair<card_methods::card_suit, int>& card_2);
+	// if  1 card > 2 card return difference (int) //  if  1 card < 2 card return -1
+	int card_comparison(const std::pair<card_methods::card_suit, int>& card_1, const std::pair<card_methods::card_suit, int>& card_2);
 	//
 
 	// methods for computer opponent
 	void give_cards_to_the_computer();
 	void computer_intelligence();
 	void computer_attacks();
-	void computer_protects(std::pair<card_methods::card_suit, int>& card);
+	bool find_card_to_attack(std::pair<card_methods::card_suit, int>& card_to_attack);
+	void computer_protects();
 	void debugFunc__show_cards();
 	//
 
@@ -182,10 +179,9 @@ namespace FoolGame {
 
 
 
-	bool is_card_a_trump(const std::pair<card_methods::card_suit, int>& card);
-
-
 	
-		 
+
+
+
 };
 }

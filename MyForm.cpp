@@ -11,7 +11,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::InitializeComponent(void)
 {
-	this->play_button = (gcnew System::Windows::Forms::Button());
+	this->Trupm_card = (gcnew System::Windows::Forms::PictureBox());
+	this->Cards_in_the_desk = (gcnew System::Windows::Forms::PictureBox());
+	this->Broken_card = (gcnew System::Windows::Forms::PictureBox());
+	this->Computer_player_cards = (gcnew System::Windows::Forms::PictureBox());
 	this->battleground_1 = (gcnew System::Windows::Forms::PictureBox());
 	this->battleground_2 = (gcnew System::Windows::Forms::PictureBox());
 	this->battleground_3 = (gcnew System::Windows::Forms::PictureBox());
@@ -24,9 +27,6 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->battleground_10 = (gcnew System::Windows::Forms::PictureBox());
 	this->battleground_11 = (gcnew System::Windows::Forms::PictureBox());
 	this->battleground_12 = (gcnew System::Windows::Forms::PictureBox());
-	this->Computer_player_cards = (gcnew System::Windows::Forms::PictureBox());
-	this->Trupm_card = (gcnew System::Windows::Forms::PictureBox());
-	this->Cards_in_the_desk = (gcnew System::Windows::Forms::PictureBox());
 	this->Player_card_1 = (gcnew System::Windows::Forms::PictureBox());
 	this->Player_card_2 = (gcnew System::Windows::Forms::PictureBox());
 	this->Player_card_3 = (gcnew System::Windows::Forms::PictureBox());
@@ -47,11 +47,14 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_18 = (gcnew System::Windows::Forms::PictureBox());
 	this->Player_card_19 = (gcnew System::Windows::Forms::PictureBox());
 	this->Player_card_20 = (gcnew System::Windows::Forms::PictureBox());
+	this->play_button = (gcnew System::Windows::Forms::Button());
 	this->finished__take_cards_button = (gcnew System::Windows::Forms::Button());
-	this->sort_cards_button = (gcnew System::Windows::Forms::Button());
 	this->Label = (gcnew System::Windows::Forms::Label());
-	this->label1 = (gcnew System::Windows::Forms::Label());
-	this->Broken_card = (gcnew System::Windows::Forms::PictureBox());
+	this->Label2 = (gcnew System::Windows::Forms::Label());
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Trupm_card))->BeginInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Cards_in_the_desk))->BeginInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Broken_card))->BeginInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Computer_player_cards))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_1))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_2))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_3))->BeginInit();
@@ -64,9 +67,6 @@ void FoolGame::MyForm::InitializeComponent(void)
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_10))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_11))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_12))->BeginInit();
-	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Computer_player_cards))->BeginInit();
-	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Trupm_card))->BeginInit();
-	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Cards_in_the_desk))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_1))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_2))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_3))->BeginInit();
@@ -87,18 +87,39 @@ void FoolGame::MyForm::InitializeComponent(void)
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_18))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_19))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_20))->BeginInit();
-	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Broken_card))->BeginInit();
 	this->SuspendLayout();
 	// 
-	// play_button
+	// Trupm_card
 	// 
-	this->play_button->Location = System::Drawing::Point(22, 21);
-	this->play_button->Name = L"play_button";
-	this->play_button->Size = System::Drawing::Size(95, 56);
-	this->play_button->TabIndex = 0;
-	this->play_button->Text = L"PlayGame";
-	this->play_button->UseVisualStyleBackColor = true;
-	this->play_button->Click += gcnew System::EventHandler(this, &MyForm::Play_Game_Click);
+	this->Trupm_card->Location = System::Drawing::Point(279, 182);
+	this->Trupm_card->Name = L"Trupm_card";
+	this->Trupm_card->Size = System::Drawing::Size(100, 143);
+	this->Trupm_card->TabIndex = 15;
+	this->Trupm_card->TabStop = false;
+	// 
+	// Cards_in_the_desk
+	// 
+	this->Cards_in_the_desk->Location = System::Drawing::Point(256, 274);
+	this->Cards_in_the_desk->Name = L"Cards_in_the_desk";
+	this->Cards_in_the_desk->Size = System::Drawing::Size(158, 101);
+	this->Cards_in_the_desk->TabIndex = 16;
+	this->Cards_in_the_desk->TabStop = false;
+	// 
+	// Broken_card
+	// 
+	this->Broken_card->Location = System::Drawing::Point(22, 224);
+	this->Broken_card->Name = L"Broken_card";
+	this->Broken_card->Size = System::Drawing::Size(158, 101);
+	this->Broken_card->TabIndex = 41;
+	this->Broken_card->TabStop = false;
+	// 
+	// Computer_player_cards
+	// 
+	this->Computer_player_cards->Location = System::Drawing::Point(716, 12);
+	this->Computer_player_cards->Name = L"Computer_player_cards";
+	this->Computer_player_cards->Size = System::Drawing::Size(100, 143);
+	this->Computer_player_cards->TabIndex = 14;
+	this->Computer_player_cards->TabStop = false;
 	// 
 	// battleground_1
 	// 
@@ -195,30 +216,6 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->battleground_12->Size = System::Drawing::Size(100, 143);
 	this->battleground_12->TabIndex = 13;
 	this->battleground_12->TabStop = false;
-	// 
-	// Computer_player_cards
-	// 
-	this->Computer_player_cards->Location = System::Drawing::Point(716, 12);
-	this->Computer_player_cards->Name = L"Computer_player_cards";
-	this->Computer_player_cards->Size = System::Drawing::Size(100, 143);
-	this->Computer_player_cards->TabIndex = 14;
-	this->Computer_player_cards->TabStop = false;
-	// 
-	// Trupm_card
-	// 
-	this->Trupm_card->Location = System::Drawing::Point(279, 182);
-	this->Trupm_card->Name = L"Trupm_card";
-	this->Trupm_card->Size = System::Drawing::Size(100, 143);
-	this->Trupm_card->TabIndex = 15;
-	this->Trupm_card->TabStop = false;
-	// 
-	// Cards_in_the_desk
-	// 
-	this->Cards_in_the_desk->Location = System::Drawing::Point(256, 274);
-	this->Cards_in_the_desk->Name = L"Cards_in_the_desk";
-	this->Cards_in_the_desk->Size = System::Drawing::Size(158, 101);
-	this->Cards_in_the_desk->TabIndex = 16;
-	this->Cards_in_the_desk->TabStop = false;
 	// 
 	// Player_card_1
 	// 
@@ -400,6 +397,16 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Player_card_20->TabStop = false;
 	this->Player_card_20->Click += gcnew System::EventHandler(this, &MyForm::Player_card_20_Click);
 	// 
+	// play_button
+	// 
+	this->play_button->Location = System::Drawing::Point(22, 21);
+	this->play_button->Name = L"play_button";
+	this->play_button->Size = System::Drawing::Size(95, 56);
+	this->play_button->TabIndex = 0;
+	this->play_button->Text = L"PlayGame/Start over";
+	this->play_button->UseVisualStyleBackColor = true;
+	this->play_button->Click += gcnew System::EventHandler(this, &MyForm::Play_Game_Click);
+	// 
 	// finished__take_cards_button
 	// 
 	this->finished__take_cards_button->Location = System::Drawing::Point(133, 21);
@@ -410,42 +417,21 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->finished__take_cards_button->UseVisualStyleBackColor = true;
 	this->finished__take_cards_button->Click += gcnew System::EventHandler(this, &MyForm::finished_or_take_cards_button_Click);
 	// 
-	// sort_cards_button
-	// 
-	this->sort_cards_button->Location = System::Drawing::Point(246, 21);
-	this->sort_cards_button->Name = L"sort_cards_button";
-	this->sort_cards_button->Size = System::Drawing::Size(95, 56);
-	this->sort_cards_button->TabIndex = 38;
-	this->sort_cards_button->Text = L"Sort cards";
-	this->sort_cards_button->UseVisualStyleBackColor = true;
-	this->sort_cards_button->Click += gcnew System::EventHandler(this, &MyForm::sort_cards_button_Click);
-	// 
 	// Label
 	// 
 	this->Label->AutoSize = true;
-	this->Label->Location = System::Drawing::Point(53, 113);
+	this->Label->Location = System::Drawing::Point(305, 43);
 	this->Label->Name = L"Label";
 	this->Label->Size = System::Drawing::Size(0, 13);
 	this->Label->TabIndex = 39;
 	// 
-	// label1
+	// Label2
 	// 
-	this->label1->AutoSize = true;
-	this->label1->Location = System::Drawing::Point(972, 45);
-	this->label1->Name = L"label1";
-	this->label1->Size = System::Drawing::Size(175, 104);
-	this->label1->TabIndex = 40;
-	this->label1->Text = L"\r\n\r\n\r\n                              \r\n                          \r\n               "
-		L"                           \r\n               \r\n                                  "
-		L"                      ";
-	// 
-	// Broken_card
-	// 
-	this->Broken_card->Location = System::Drawing::Point(22, 224);
-	this->Broken_card->Name = L"Broken_card";
-	this->Broken_card->Size = System::Drawing::Size(158, 101);
-	this->Broken_card->TabIndex = 41;
-	this->Broken_card->TabStop = false;
+	this->Label2->AutoSize = true;
+	this->Label2->Location = System::Drawing::Point(972, 45);
+	this->Label2->Name = L"Label2";
+	this->Label2->Size = System::Drawing::Size(0, 13);
+	this->Label2->TabIndex = 40;
 	// 
 	// MyForm
 	// 
@@ -453,11 +439,10 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 	this->BackColor = System::Drawing::SystemColors::ScrollBar;
 	this->ClientSize = System::Drawing::Size(1298, 760);
-	this->Controls->Add(this->Broken_card);
-	this->Controls->Add(this->label1);
+	this->Controls->Add(this->Label2);
 	this->Controls->Add(this->Label);
-	this->Controls->Add(this->sort_cards_button);
 	this->Controls->Add(this->finished__take_cards_button);
+	this->Controls->Add(this->play_button);
 	this->Controls->Add(this->Player_card_20);
 	this->Controls->Add(this->Player_card_19);
 	this->Controls->Add(this->Player_card_18);
@@ -478,9 +463,6 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Controls->Add(this->Player_card_3);
 	this->Controls->Add(this->Player_card_2);
 	this->Controls->Add(this->Player_card_1);
-	this->Controls->Add(this->Cards_in_the_desk);
-	this->Controls->Add(this->Trupm_card);
-	this->Controls->Add(this->Computer_player_cards);
 	this->Controls->Add(this->battleground_12);
 	this->Controls->Add(this->battleground_11);
 	this->Controls->Add(this->battleground_10);
@@ -493,9 +475,16 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Controls->Add(this->battleground_3);
 	this->Controls->Add(this->battleground_2);
 	this->Controls->Add(this->battleground_1);
-	this->Controls->Add(this->play_button);
+	this->Controls->Add(this->Computer_player_cards);
+	this->Controls->Add(this->Broken_card);
+	this->Controls->Add(this->Cards_in_the_desk);
+	this->Controls->Add(this->Trupm_card);
 	this->Name = L"MyForm";
 	this->Text = L"Fool_game";
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Trupm_card))->EndInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Cards_in_the_desk))->EndInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Broken_card))->EndInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Computer_player_cards))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_1))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_2))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_3))->EndInit();
@@ -508,9 +497,6 @@ void FoolGame::MyForm::InitializeComponent(void)
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_10))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_11))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->battleground_12))->EndInit();
-	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Computer_player_cards))->EndInit();
-	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Trupm_card))->EndInit();
-	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Cards_in_the_desk))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_1))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_2))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_3))->EndInit();
@@ -531,11 +517,12 @@ void FoolGame::MyForm::InitializeComponent(void)
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_18))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_19))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_20))->EndInit();
-	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Broken_card))->EndInit();
 	this->ResumeLayout(false);
 	this->PerformLayout();
 
 }
+//-----------------------------------------------------------------------------------------
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::Player_card_Click(System::Windows::Forms::PictureBox^% Player_card)
 {
@@ -551,13 +538,20 @@ void FoolGame::MyForm::Player_card_Click(System::Windows::Forms::PictureBox^% Pl
 		return; // unlikely
 
 	//determine if the card is suitable
-
-
-
-
+	if (!determine_right_card(card))
+		return;
 
 	if (!move_card_in_battleground_field(card,true))
 		return;
+
+
+	if (desc_cards.empty() && player_cards_in_storage.size() == 0 && computer_cards_in_storage.size()!=0)
+	{
+		this->Label->Text = L"     YOU WIN!   ";
+		Label->Refresh();
+		return;
+	}
+
 
 	update_player_cards();
 
@@ -685,50 +679,33 @@ System::Void FoolGame::MyForm::Play_Game_Click(System::Object^ sender, System::E
 	// 5 step. Give cards to computer opponent
 	give_cards_to_the_computer();
 
-
-
-
+	// 6 step. Start game with computer
 	computer_intelligence();
-	
-
-
-
-
 }
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::finished_or_take_cards_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
+	if (!players_current_turn)
+		return;
+
 	// if player want to finished current round
-	if (players_turn)
+	if (players_attack)
 	{
-		if (!players_current_turn)
-			return;
+		players_attack = false;
+		players_current_turn = false;
 
 		finished_round();
 	}
 	//  if player want to take cards
 	else
 	{
-		if (!players_current_turn)
-			return;
+		players_attack = false;
+		players_current_turn = false;
 
 		move_cards_from_battleground_field(true);
-
-		players_turn = false;
-		players_current_turn = false;
 	}
 
-
 	computer_intelligence();
-}
-//-----------------------------------------------------------------------------------------
-System::Void FoolGame::MyForm::sort_cards_button_Click(System::Object^ sender, System::EventArgs^ e)
-{
-	if (player_cards_in_storage.size() < 2)
-		return;
-
-	card_methods::sort_cards(player_cards_in_storage, trump_suit);
-	update_player_cards();
 }
 //-----------------------------------------------------------------------------------------
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -818,15 +795,16 @@ void FoolGame::MyForm::random_distribution_of_cards()
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::determine_the_turn_of_the_move()
 {
-	/*if (card_methods::get_random_int(1, 10) > 5)
+	if (card_methods::get_random_int(1, 10) > 5)
 	{
-		players_turn = true;
+		players_attack = true;
 		players_current_turn = true;
 		this->Label->Text = L"     YOUR MOVE   ";
+		Label->Refresh();
 	}
-	else*/
+	else
 	{
-		players_turn = false;
+		players_attack = false;
 		players_current_turn = false;
 		Label->Text = L"  OPPONENT'S MOVE  ";
 		Label->Refresh();
@@ -845,15 +823,17 @@ bool FoolGame::MyForm::get_card_from_desc(std::pair<card_methods::card_suit, int
 	if (desc_cards.size() == 1)
 	{
 		Cards_in_the_desk->Image = nullptr;
+		Cards_in_the_desk->Refresh();
 		return true;
 	}
 
 	if (desc_cards.empty())
 	{
-		if (Cards_in_the_desk->Image)
-			Cards_in_the_desk->Image = nullptr;
+		Cards_in_the_desk->Image = nullptr;
+		Cards_in_the_desk->Refresh();
 
 		Trupm_card->Image = nullptr;
+		Trupm_card->Refresh();
 
 		switch (card.first)
 		{
@@ -870,9 +850,11 @@ bool FoolGame::MyForm::get_card_from_desc(std::pair<card_methods::card_suit, int
 			Trupm_card->Image = Image::FromFile("cards_images/Badge_spades.PNG");
 			break;
 		}
+
+		Trupm_card->Refresh();
+
 		return true;		
 	}
-
 	return true;
 }
 //-----------------------------------------------------------------------------------------
@@ -914,17 +896,6 @@ void FoolGame::MyForm::finished_round()
 	Label->Text = L"  FINISHED  ";
 	Label->Refresh();
 
-	// pause
-	Sleep(1000);
-
-	if (players_turn)
-		Label->Text = L"     YOUR MOVE   ";
-	else
-		Label->Text = L"  OPPONENT'S MOVE  ";
-
-	Label->Refresh();
-
-
 	for (const auto& card : cards_in_battleground)
 	{
 		broken_cards.push_back(card);
@@ -940,8 +911,41 @@ void FoolGame::MyForm::finished_round()
 		Broken_card->Refresh();
 	}
 
-	give_cards_to_the_player();
-	give_cards_to_the_computer();
+
+	if (players_attack)
+	{
+		give_cards_to_the_computer();
+		give_cards_to_the_player();
+	}
+	else
+	{
+		give_cards_to_the_player();
+		give_cards_to_the_computer();
+	}
+
+	// pause
+	Sleep(1000);
+
+
+	/*if (desc_cards.empty() && player_cards_in_storage.size() == 0 && computer_cards_in_storage.size() != 0)
+	{
+		this->Label->Text = L"     YOU WIN!   ";
+		Label->Refresh();
+		return;
+	}*/
+
+	//if (player_cards_in_storage.size() == 0)
+	//{
+
+	//}
+
+
+	if (players_attack)
+		Label->Text = L"     YOUR MOVE   ";
+	else
+		Label->Text = L"  OPPONENT'S MOVE  ";
+
+	Label->Refresh();
 
 	debugFunc__show_cards();
 }
@@ -1045,14 +1049,20 @@ void FoolGame::MyForm::give_cards_to_the_player()
 
 		if (get_card_from_desc(player_card))
 		{
-			if (!place_player_card_in_storage(player_card))
-				return;
+			//if (!place_player_card_in_storage(player_card))
+			//	return;
+			player_cards_in_storage.push_back(player_card);
 		}
 		else
-			return;
+			break;
 
-		Sleep(300);
+		Sleep(200);
 	}
+
+	if (player_cards_in_storage.size() < 2)
+		return;
+
+	update_player_cards();
 }
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::update_player_cards()
@@ -1062,6 +1072,7 @@ void FoolGame::MyForm::update_player_cards()
 	if (player_cards_in_storage.size() == 0)
 		return;
 
+	card_methods::sort_cards(player_cards_in_storage, trump_suit);
 	std::vector<std::pair<card_methods::card_suit, int>> player_cards_temp = player_cards_in_storage;
 	player_cards_in_storage.clear();
 
@@ -1069,6 +1080,7 @@ void FoolGame::MyForm::update_player_cards()
 	{
 		place_player_card_in_storage(card);
 	}
+
 }
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::clear_player_card_field()
@@ -1097,31 +1109,59 @@ void FoolGame::MyForm::clear_player_card_field()
 //-----------------------------------------------------------------------------------------
 bool FoolGame::MyForm::determine_right_card(const std::pair<card_methods::card_suit, int>& card)
 {
-	auto it = std::find(player_cards_in_storage.begin(), player_cards_in_storage.end(), card);
-	if (it == player_cards_in_storage.end())
-		return false;
-		
+	if (players_attack)
+	{
+		if (cards_in_battleground.size() == 0)
+			return true;
 
+		// kind of cards
+		std::set<int> different_cards;
+		for (const auto& card : cards_in_battleground)
+		{
+			different_cards.insert(card.second);
+		}
 
+		if (different_cards.count(card.second))
+			return true;
+		else
+			return false;
+	}
+	else
+	{
+		auto it = std::find(player_cards_in_storage.begin(), player_cards_in_storage.end(), card);
+		if (it == player_cards_in_storage.end())
+			return false;
 
+		std::pair<card_methods::card_suit, int> card_2 = cards_in_battleground.back();
 
-
-
-
-
-
+		if (card_comparison(card, card_2) > 0)
+			return true;
+		else
+			return false;
+	}
+	return false;
 }
 //-----------------------------------------------------------------------------------------
-// if  1 card > 2 card return true, else return false
-bool FoolGame::MyForm::card_comparison(const std::pair<card_methods::card_suit, int>& card_1, const std::pair<card_methods::card_suit, int>& card_2)
+// if  1 card > 2 card return difference (int) //  if  1 card < 2 card return -1
+int FoolGame::MyForm::card_comparison(const std::pair<card_methods::card_suit, int>& card_1, const std::pair<card_methods::card_suit, int>& card_2)
 {
+	if (card_1.first == card_2.first)
+	{
+		if (card_1.second < card_2.second)
+			return -1;
+		else
+			return card_1.second - card_2.second;
+	}
+
+	if (card_1.first != trump_suit)
+		return -1;
+
 	if ((card_1.first == trump_suit) && (card_2.first != trump_suit))
-		return true;
-
-
-
-
-
+	{
+		int value_1 = 15 - card_2.second;
+		int value_2 = card_1.second - 6;
+		return value_1 + value_2;
+	}
 
 }
 //-----------------------------------------------------------------------------------------
@@ -1152,64 +1192,33 @@ void FoolGame::MyForm::computer_intelligence()
 
 	Sleep(1000);
 
-	
-
-
-
-
-
-
-
-
-
-
 	if (players_current_turn)
 		return;
 
-	if (!players_turn)
+	if (!players_attack)
 	{
-		
-
-
-
-
-
 		computer_attacks();
 	}
-
-
-
-
+	else
+	{
+		computer_protects();
+	}
 
 	debugFunc__show_cards();
 }
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::computer_attacks()
 {
-
-	if (cards_in_battleground.size()==0)
-	{
-		give_cards_to_the_computer(); // if necessary
-
-		std::pair<card_methods::card_suit, int> first_card = computer_cards_in_storage.front();
-
-		if (!move_card_in_battleground_field(first_card, false))
-			return;
-
-		Label->Text = L"     YOUR MOVE   ";
-		Label->Refresh();
-		players_current_turn = true;
-
-		return;
-	}
+	if (cards_in_battleground.size() == 0)
+		give_cards_to_the_computer();  // if necessary
 
 	std::pair<card_methods::card_suit, int> card_to_attack;
 
-	if (!card_methods::find_card_to_attack(cards_in_battleground, computer_cards_in_storage, trump_suit, card_to_attack))
+	if (!find_card_to_attack(card_to_attack))
 	{
 		// now player's turn
 		players_current_turn = true;
-		players_turn = true;
+		players_attack = true;
 
 		//finished
 		finished_round();	
@@ -1224,14 +1233,13 @@ void FoolGame::MyForm::computer_attacks()
 			
 			// now player's turn
 			players_current_turn = true;
-			players_turn = true;
+			players_attack = true;
 
 			//finished
 			finished_round();
 			return;
 		}
 
-	
 		Label->Text = L"     YOUR MOVE   ";
 		Label->Refresh();
 		players_current_turn = true;
@@ -1240,14 +1248,119 @@ void FoolGame::MyForm::computer_attacks()
 	}
 }
 //-----------------------------------------------------------------------------------------
-void FoolGame::MyForm::computer_protects(std::pair<card_methods::card_suit, int>& card)
+bool FoolGame::MyForm::find_card_to_attack(std::pair<card_methods::card_suit, int>& card_to_attack)
 {
-	
+	// first turn of computer
+	if (cards_in_battleground.size() == 0)
+	{
+		card_to_attack = computer_cards_in_storage.front();
+		return true;
+	}
+
+
+
+
+
+	// kind of cards
+	std::set<int> different_cards;
+	for (const auto& card : cards_in_battleground)
+		different_cards.insert(card.second);
+
+	bool is_found = false;
+	for (const auto& card : computer_cards_in_storage)
+	{
+		if (different_cards.count(card.second) && (card.first != trump_suit))
+		{
+			card_to_attack = card;
+			is_found = true;
+			break;
+		}
+	}
+
+	if (is_found)
+	{
+		return true;
+
+	}
+	else
+	{
+		return false;
+
+	}
+
+
+
+	return true;
+}
+//-----------------------------------------------------------------------------------------
+void FoolGame::MyForm::computer_protects()
+{
+	if (cards_in_battleground.size() == 0)
+		return;
+
+	// the card to be hit
+	std::pair<card_methods::card_suit, int> last_card = cards_in_battleground.back();
+
+	// the best card to fight back
+	std::pair<card_methods::card_suit, int> best_card;
+	int max_diff = 100;
+
+	for (const auto& card : computer_cards_in_storage)
+	{
+		int value_diff = card_comparison(card, last_card);
+
+		if (value_diff > 0)
+		{
+			if (value_diff < max_diff)
+			{
+				max_diff = value_diff;
+				best_card = card;
+			}
+		}
+	}
+
+
+	// if computer did not found card
+	if (max_diff == 100)
+	{
+		// computer takes the cards
+		move_cards_from_battleground_field(false);
+
+		// now player's turn again because computer takes the cards
+		players_current_turn = true;
+		players_attack = true;
+
+
+		Label->Text = L"  FINISHED.OPPONENT TAKE CARDS";
+		Label->Refresh();
+
+		// pause
+		Sleep(1000);
+		give_cards_to_the_player();
+
+
+		Label->Text = L"     YOUR MOVE   ";
+		Label->Refresh();
+
+		debugFunc__show_cards();
+
+		return;
+	}
+	else
+	{
+		if (!move_card_in_battleground_field(best_card, false))
+			return;
+
+
+		debugFunc__show_cards();
+
+		players_current_turn = true;
+	}
 }
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::debugFunc__show_cards()
 {
-	label1->ResetText();
+	Label2->ResetText();
 
 
 	String^ str12;
@@ -1270,8 +1383,8 @@ void FoolGame::MyForm::debugFunc__show_cards()
 		str12 += str1;
 		str12 += "\n";
 	}
-	label1->Text = str12;
-	label1->Refresh();
+	Label2->Text = str12;
+	Label2->Refresh();
 }
 //-----------------------------------------------------------------------------------------
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -1405,10 +1518,4 @@ void FoolGame::MyForm::clear_battleground_field()
 	battleground_12->Image = nullptr; battleground_12->ResetText(); battleground_12->Refresh();
 }
 //-----------------------------------------------------------------------------------------
-//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-//-----------------------------------------------------------------------------------------
-bool FoolGame::MyForm::is_card_a_trump(const std::pair<card_methods::card_suit, int>& card)
-{
-	return (trump_suit == card.first);
-}
 //-----------------------------------------------------------------------------------------

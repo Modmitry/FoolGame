@@ -28,7 +28,6 @@ public:
 		spades
 	};
 
-
 public:
 
 	static bool load_card_image(const std::pair<card_suit, int>& card, String^% way);
@@ -36,11 +35,5 @@ public:
 	static bool card_by_index(std::pair<card_suit, int>& card,String^% indx);
 	static int get_random_int(const int& left_bound, const int& right_bound);
 	static void sort_cards(std::vector<std::pair<card_suit, int>>& cards, const card_suit& trump);
-
-	static bool find_card_to_attack(
-		const std::vector<std::pair<card_suit, int>>& cards_on_field,
-		const std::vector<std::pair<card_suit, int>>& cards_where_to_find,
-		const card_suit& trump,
-		std::pair<card_methods::card_suit, int>& card);
 };
 
