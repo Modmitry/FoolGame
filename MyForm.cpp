@@ -550,6 +550,12 @@ void FoolGame::MyForm::Player_card_Click(System::Windows::Forms::PictureBox^% Pl
 	if (!card_methods::card_by_index(card, Player_card->Text))
 		return; // unlikely
 
+	//determine if the card is suitable
+
+
+
+
+
 	if (!move_card_in_battleground_field(card,true))
 		return;
 
@@ -730,42 +736,42 @@ System::Void FoolGame::MyForm::sort_cards_button_Click(System::Object^ sender, S
 void FoolGame::MyForm::random_distribution_of_cards()
 {
 	std::vector<std::pair<card_methods::card_suit, int>> all_cards{
-	{card_methods::card_suit::hearts,1},
-	{card_methods::card_suit::hearts,2},
-	{card_methods::card_suit::hearts,3},
-	{card_methods::card_suit::hearts,4},
-	{card_methods::card_suit::hearts,5},
 	{card_methods::card_suit::hearts,6},
 	{card_methods::card_suit::hearts,7},
 	{card_methods::card_suit::hearts,8},
 	{card_methods::card_suit::hearts,9},
-	{card_methods::card_suit::clubs,1},
-	{card_methods::card_suit::clubs,2},
-	{card_methods::card_suit::clubs,3},
-	{card_methods::card_suit::clubs,4},
-	{card_methods::card_suit::clubs,5},
+	{card_methods::card_suit::hearts,10},
+	{card_methods::card_suit::hearts,11},
+	{card_methods::card_suit::hearts,12},
+	{card_methods::card_suit::hearts,13},
+	{card_methods::card_suit::hearts,14},
 	{card_methods::card_suit::clubs,6},
 	{card_methods::card_suit::clubs,7},
 	{card_methods::card_suit::clubs,8},
 	{card_methods::card_suit::clubs,9},
-	{card_methods::card_suit::diamonds,1},
-	{card_methods::card_suit::diamonds,2},
-	{card_methods::card_suit::diamonds,3},
-	{card_methods::card_suit::diamonds,4},
-	{card_methods::card_suit::diamonds,5},
+	{card_methods::card_suit::clubs,10},
+	{card_methods::card_suit::clubs,11},
+	{card_methods::card_suit::clubs,12},
+	{card_methods::card_suit::clubs,13},
+	{card_methods::card_suit::clubs,14},
 	{card_methods::card_suit::diamonds,6},
 	{card_methods::card_suit::diamonds,7},
 	{card_methods::card_suit::diamonds,8},
 	{card_methods::card_suit::diamonds,9},
-	{card_methods::card_suit::spades,1},
-	{card_methods::card_suit::spades,2},
-	{card_methods::card_suit::spades,3},
-	{card_methods::card_suit::spades,4},
-	{card_methods::card_suit::spades,5},
+	{card_methods::card_suit::diamonds,10},
+	{card_methods::card_suit::diamonds,11},
+	{card_methods::card_suit::diamonds,12},
+	{card_methods::card_suit::diamonds,13},
+	{card_methods::card_suit::diamonds,14},
 	{card_methods::card_suit::spades,6},
 	{card_methods::card_suit::spades,7},
 	{card_methods::card_suit::spades,8},
-	{card_methods::card_suit::spades,9}
+	{card_methods::card_suit::spades,9},
+	{card_methods::card_suit::spades,10},
+	{card_methods::card_suit::spades,11},
+	{card_methods::card_suit::spades,12},
+	{card_methods::card_suit::spades,13},
+	{card_methods::card_suit::spades,14}
 	};
 
 
@@ -1087,6 +1093,36 @@ void FoolGame::MyForm::clear_player_card_field()
 	Player_card_18->Image = nullptr; Player_card_18->ResetText(); Player_card_18->Refresh();
 	Player_card_19->Image = nullptr; Player_card_19->ResetText(); Player_card_19->Refresh();
 	Player_card_20->Image = nullptr; Player_card_20->ResetText(); Player_card_20->Refresh();
+}
+//-----------------------------------------------------------------------------------------
+bool FoolGame::MyForm::determine_right_card(const std::pair<card_methods::card_suit, int>& card)
+{
+	auto it = std::find(player_cards_in_storage.begin(), player_cards_in_storage.end(), card);
+	if (it == player_cards_in_storage.end())
+		return false;
+		
+
+
+
+
+
+
+
+
+
+}
+//-----------------------------------------------------------------------------------------
+// if  1 card > 2 card return true, else return false
+bool FoolGame::MyForm::card_comparison(const std::pair<card_methods::card_suit, int>& card_1, const std::pair<card_methods::card_suit, int>& card_2)
+{
+	if ((card_1.first == trump_suit) && (card_2.first != trump_suit))
+		return true;
+
+
+
+
+
+
 }
 //-----------------------------------------------------------------------------------------
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&

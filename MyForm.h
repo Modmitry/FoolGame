@@ -162,6 +162,9 @@ namespace FoolGame {
 	void give_cards_to_the_player();
 	void update_player_cards();
 	void clear_player_card_field();
+	bool determine_right_card(const std::pair<card_methods::card_suit, int>& card);
+	// if  1 card > 2 card return true, else return false
+	bool card_comparison(const std::pair<card_methods::card_suit, int>& card_1, const std::pair<card_methods::card_suit, int>& card_2);
 	//
 
 	// methods for computer opponent
