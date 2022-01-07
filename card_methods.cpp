@@ -601,6 +601,9 @@ int card_methods::get_random_int(const int& left_bound, const int& right_bound)
 //-----------------------------------------------------------------------------------------
 void card_methods::sort_cards(std::vector<std::pair<card_suit, int>>& cards, const card_suit& trump)
 {
+	if (cards.size() < 2)
+		return;
+
 	std::sort(cards.begin(), cards.end(), [&](const auto& a, const auto& b) 
 	{
 		// if card A is a trump card

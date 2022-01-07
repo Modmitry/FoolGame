@@ -11,7 +11,7 @@ std::vector<std::pair<card_methods::card_suit, int>> broken_cards;
 // members for player
 std::vector<std::pair<card_methods::card_suit, int>> player_cards_in_storage;
 bool players_attack = false;
-bool players_current_turn = false;
+bool players_current_attack = false;
 //
 
 // members for computer opponent
@@ -105,6 +105,12 @@ namespace FoolGame {
 	// labels
 	private: System::Windows::Forms::Label^ Label;
 	private: System::Windows::Forms::Label^ Label2;
+	private: System::Windows::Forms::PictureBox^ Player_card_21;
+	private: System::Windows::Forms::PictureBox^ Player_card_22;
+	private: System::Windows::Forms::PictureBox^ Player_card_23;
+	private: System::Windows::Forms::PictureBox^ Player_card_24;
+
+
 
 
 	/// Required designer variable.
@@ -140,6 +146,10 @@ namespace FoolGame {
 	private: System::Void Player_card_18_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void Player_card_19_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void Player_card_20_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_21_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_22_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_23_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void Player_card_24_Click(System::Object^ sender, System::EventArgs^ e);
 		   
 	// button clicks
 	private: System::Void Play_Game_Click(System::Object^ sender, System::EventArgs^ e);
@@ -169,6 +179,8 @@ namespace FoolGame {
 	void computer_attacks();
 	bool find_card_to_attack(std::pair<card_methods::card_suit, int>& card_to_attack);
 	void computer_protects();
+	void update_computer_cards();
+	// debug func
 	void debugFunc__show_cards();
 	//
 
@@ -176,12 +188,6 @@ namespace FoolGame {
 	bool move_card_in_battleground_field(const std::pair<card_methods::card_suit, int>& card, const bool& is_players_card);
 	void move_cards_from_battleground_field(const bool& is_players_card);
 	void clear_battleground_field();
-
-
-
-	
-
-
 
 };
 }

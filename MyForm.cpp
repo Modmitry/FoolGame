@@ -51,6 +51,10 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->finished__take_cards_button = (gcnew System::Windows::Forms::Button());
 	this->Label = (gcnew System::Windows::Forms::Label());
 	this->Label2 = (gcnew System::Windows::Forms::Label());
+	this->Player_card_21 = (gcnew System::Windows::Forms::PictureBox());
+	this->Player_card_22 = (gcnew System::Windows::Forms::PictureBox());
+	this->Player_card_23 = (gcnew System::Windows::Forms::PictureBox());
+	this->Player_card_24 = (gcnew System::Windows::Forms::PictureBox());
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Trupm_card))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Cards_in_the_desk))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Broken_card))->BeginInit();
@@ -87,6 +91,10 @@ void FoolGame::MyForm::InitializeComponent(void)
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_18))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_19))->BeginInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_20))->BeginInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_21))->BeginInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_22))->BeginInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_23))->BeginInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_24))->BeginInit();
 	this->SuspendLayout();
 	// 
 	// Trupm_card
@@ -219,7 +227,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_1
 	// 
-	this->Player_card_1->Location = System::Drawing::Point(17, 451);
+	this->Player_card_1->Location = System::Drawing::Point(0, 451);
 	this->Player_card_1->Name = L"Player_card_1";
 	this->Player_card_1->Size = System::Drawing::Size(100, 143);
 	this->Player_card_1->TabIndex = 17;
@@ -228,7 +236,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_2
 	// 
-	this->Player_card_2->Location = System::Drawing::Point(151, 451);
+	this->Player_card_2->Location = System::Drawing::Point(106, 451);
 	this->Player_card_2->Name = L"Player_card_2";
 	this->Player_card_2->Size = System::Drawing::Size(100, 143);
 	this->Player_card_2->TabIndex = 18;
@@ -237,7 +245,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_3
 	// 
-	this->Player_card_3->Location = System::Drawing::Point(279, 451);
+	this->Player_card_3->Location = System::Drawing::Point(212, 451);
 	this->Player_card_3->Name = L"Player_card_3";
 	this->Player_card_3->Size = System::Drawing::Size(100, 143);
 	this->Player_card_3->TabIndex = 19;
@@ -246,7 +254,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_4
 	// 
-	this->Player_card_4->Location = System::Drawing::Point(407, 451);
+	this->Player_card_4->Location = System::Drawing::Point(318, 451);
 	this->Player_card_4->Name = L"Player_card_4";
 	this->Player_card_4->Size = System::Drawing::Size(100, 143);
 	this->Player_card_4->TabIndex = 20;
@@ -255,7 +263,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_5
 	// 
-	this->Player_card_5->Location = System::Drawing::Point(536, 451);
+	this->Player_card_5->Location = System::Drawing::Point(424, 451);
 	this->Player_card_5->Name = L"Player_card_5";
 	this->Player_card_5->Size = System::Drawing::Size(100, 143);
 	this->Player_card_5->TabIndex = 25;
@@ -264,7 +272,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_6
 	// 
-	this->Player_card_6->Location = System::Drawing::Point(664, 451);
+	this->Player_card_6->Location = System::Drawing::Point(530, 451);
 	this->Player_card_6->Name = L"Player_card_6";
 	this->Player_card_6->Size = System::Drawing::Size(100, 143);
 	this->Player_card_6->TabIndex = 21;
@@ -273,7 +281,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_7
 	// 
-	this->Player_card_7->Location = System::Drawing::Point(791, 451);
+	this->Player_card_7->Location = System::Drawing::Point(636, 451);
 	this->Player_card_7->Name = L"Player_card_7";
 	this->Player_card_7->Size = System::Drawing::Size(100, 143);
 	this->Player_card_7->TabIndex = 22;
@@ -282,7 +290,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_8
 	// 
-	this->Player_card_8->Location = System::Drawing::Point(917, 451);
+	this->Player_card_8->Location = System::Drawing::Point(742, 451);
 	this->Player_card_8->Name = L"Player_card_8";
 	this->Player_card_8->Size = System::Drawing::Size(100, 143);
 	this->Player_card_8->TabIndex = 23;
@@ -291,7 +299,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_9
 	// 
-	this->Player_card_9->Location = System::Drawing::Point(1045, 451);
+	this->Player_card_9->Location = System::Drawing::Point(848, 451);
 	this->Player_card_9->Name = L"Player_card_9";
 	this->Player_card_9->Size = System::Drawing::Size(100, 143);
 	this->Player_card_9->TabIndex = 24;
@@ -300,7 +308,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_10
 	// 
-	this->Player_card_10->Location = System::Drawing::Point(1172, 451);
+	this->Player_card_10->Location = System::Drawing::Point(954, 451);
 	this->Player_card_10->Name = L"Player_card_10";
 	this->Player_card_10->Size = System::Drawing::Size(100, 143);
 	this->Player_card_10->TabIndex = 26;
@@ -309,7 +317,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_11
 	// 
-	this->Player_card_11->Location = System::Drawing::Point(22, 615);
+	this->Player_card_11->Location = System::Drawing::Point(1060, 451);
 	this->Player_card_11->Name = L"Player_card_11";
 	this->Player_card_11->Size = System::Drawing::Size(100, 143);
 	this->Player_card_11->TabIndex = 27;
@@ -318,7 +326,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_12
 	// 
-	this->Player_card_12->Location = System::Drawing::Point(151, 615);
+	this->Player_card_12->Location = System::Drawing::Point(1166, 451);
 	this->Player_card_12->Name = L"Player_card_12";
 	this->Player_card_12->Size = System::Drawing::Size(100, 143);
 	this->Player_card_12->TabIndex = 28;
@@ -327,7 +335,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_13
 	// 
-	this->Player_card_13->Location = System::Drawing::Point(279, 615);
+	this->Player_card_13->Location = System::Drawing::Point(0, 605);
 	this->Player_card_13->Name = L"Player_card_13";
 	this->Player_card_13->Size = System::Drawing::Size(100, 143);
 	this->Player_card_13->TabIndex = 29;
@@ -336,7 +344,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_14
 	// 
-	this->Player_card_14->Location = System::Drawing::Point(407, 615);
+	this->Player_card_14->Location = System::Drawing::Point(106, 605);
 	this->Player_card_14->Name = L"Player_card_14";
 	this->Player_card_14->Size = System::Drawing::Size(100, 143);
 	this->Player_card_14->TabIndex = 30;
@@ -345,7 +353,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_15
 	// 
-	this->Player_card_15->Location = System::Drawing::Point(536, 615);
+	this->Player_card_15->Location = System::Drawing::Point(212, 605);
 	this->Player_card_15->Name = L"Player_card_15";
 	this->Player_card_15->Size = System::Drawing::Size(100, 143);
 	this->Player_card_15->TabIndex = 31;
@@ -354,7 +362,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_16
 	// 
-	this->Player_card_16->Location = System::Drawing::Point(664, 615);
+	this->Player_card_16->Location = System::Drawing::Point(318, 605);
 	this->Player_card_16->Name = L"Player_card_16";
 	this->Player_card_16->Size = System::Drawing::Size(100, 143);
 	this->Player_card_16->TabIndex = 32;
@@ -363,7 +371,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_17
 	// 
-	this->Player_card_17->Location = System::Drawing::Point(791, 615);
+	this->Player_card_17->Location = System::Drawing::Point(424, 605);
 	this->Player_card_17->Name = L"Player_card_17";
 	this->Player_card_17->Size = System::Drawing::Size(100, 143);
 	this->Player_card_17->TabIndex = 33;
@@ -372,7 +380,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_18
 	// 
-	this->Player_card_18->Location = System::Drawing::Point(917, 615);
+	this->Player_card_18->Location = System::Drawing::Point(530, 605);
 	this->Player_card_18->Name = L"Player_card_18";
 	this->Player_card_18->Size = System::Drawing::Size(100, 143);
 	this->Player_card_18->TabIndex = 34;
@@ -381,7 +389,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_19
 	// 
-	this->Player_card_19->Location = System::Drawing::Point(1045, 615);
+	this->Player_card_19->Location = System::Drawing::Point(636, 605);
 	this->Player_card_19->Name = L"Player_card_19";
 	this->Player_card_19->Size = System::Drawing::Size(100, 143);
 	this->Player_card_19->TabIndex = 35;
@@ -390,7 +398,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// 
 	// Player_card_20
 	// 
-	this->Player_card_20->Location = System::Drawing::Point(1172, 615);
+	this->Player_card_20->Location = System::Drawing::Point(742, 605);
 	this->Player_card_20->Name = L"Player_card_20";
 	this->Player_card_20->Size = System::Drawing::Size(100, 143);
 	this->Player_card_20->TabIndex = 36;
@@ -433,12 +441,52 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->Label2->Size = System::Drawing::Size(0, 13);
 	this->Label2->TabIndex = 40;
 	// 
+	// Player_card_21
+	// 
+	this->Player_card_21->Location = System::Drawing::Point(848, 605);
+	this->Player_card_21->Name = L"Player_card_21";
+	this->Player_card_21->Size = System::Drawing::Size(100, 143);
+	this->Player_card_21->TabIndex = 42;
+	this->Player_card_21->TabStop = false;
+	this->Player_card_21->Click += gcnew System::EventHandler(this, &MyForm::Player_card_21_Click);
+	// 
+	// Player_card_22
+	// 
+	this->Player_card_22->Location = System::Drawing::Point(954, 605);
+	this->Player_card_22->Name = L"Player_card_22";
+	this->Player_card_22->Size = System::Drawing::Size(100, 143);
+	this->Player_card_22->TabIndex = 43;
+	this->Player_card_22->TabStop = false;
+	this->Player_card_22->Click += gcnew System::EventHandler(this, &MyForm::Player_card_22_Click);
+	// 
+	// Player_card_23
+	// 
+	this->Player_card_23->Location = System::Drawing::Point(1060, 605);
+	this->Player_card_23->Name = L"Player_card_23";
+	this->Player_card_23->Size = System::Drawing::Size(100, 143);
+	this->Player_card_23->TabIndex = 44;
+	this->Player_card_23->TabStop = false;
+	this->Player_card_23->Click += gcnew System::EventHandler(this, &MyForm::Player_card_23_Click);
+	// 
+	// Player_card_24
+	// 
+	this->Player_card_24->Location = System::Drawing::Point(1166, 605);
+	this->Player_card_24->Name = L"Player_card_24";
+	this->Player_card_24->Size = System::Drawing::Size(100, 143);
+	this->Player_card_24->TabIndex = 45;
+	this->Player_card_24->TabStop = false;
+	this->Player_card_24->Click += gcnew System::EventHandler(this, &MyForm::Player_card_24_Click);
+	// 
 	// MyForm
 	// 
 	this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 	this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-	this->BackColor = System::Drawing::SystemColors::ScrollBar;
-	this->ClientSize = System::Drawing::Size(1298, 760);
+	this->BackColor = System::Drawing::SystemColors::Window;
+	this->ClientSize = System::Drawing::Size(1274, 760);
+	this->Controls->Add(this->Player_card_24);
+	this->Controls->Add(this->Player_card_23);
+	this->Controls->Add(this->Player_card_22);
+	this->Controls->Add(this->Player_card_21);
 	this->Controls->Add(this->Label2);
 	this->Controls->Add(this->Label);
 	this->Controls->Add(this->finished__take_cards_button);
@@ -517,6 +565,10 @@ void FoolGame::MyForm::InitializeComponent(void)
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_18))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_19))->EndInit();
 	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_20))->EndInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_21))->EndInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_22))->EndInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_23))->EndInit();
+	(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->Player_card_24))->EndInit();
 	this->ResumeLayout(false);
 	this->PerformLayout();
 
@@ -526,7 +578,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::Player_card_Click(System::Windows::Forms::PictureBox^% Player_card)
 {
-	if (!players_current_turn)
+	if (!players_current_attack)
 		return;
 
 	if (!Player_card->Image)
@@ -541,21 +593,18 @@ void FoolGame::MyForm::Player_card_Click(System::Windows::Forms::PictureBox^% Pl
 	if (!determine_right_card(card))
 		return;
 
+	if (players_attack)
+	{
+		Label->Text = L" YOU ATTACK   ";
+		Label->Refresh();
+	}
+
+	players_current_attack = false;
+
+	//determine is it possible to place  the card in battleground_field
 	if (!move_card_in_battleground_field(card,true))
 		return;
 
-
-	if (desc_cards.empty() && player_cards_in_storage.size() == 0 && computer_cards_in_storage.size()!=0)
-	{
-		this->Label->Text = L"     YOU WIN!   ";
-		Label->Refresh();
-		return;
-	}
-
-
-	update_player_cards();
-
-	players_current_turn = false;
 	// transfer of the turn to the computer
 	computer_intelligence();
 }
@@ -660,6 +709,26 @@ System::Void FoolGame::MyForm::Player_card_20_Click(System::Object^ sender, Syst
 	Player_card_Click(Player_card_20);
 }
 //-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_21_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	Player_card_Click(Player_card_21);
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_22_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	Player_card_Click(Player_card_22);
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_23_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	Player_card_Click(Player_card_23);
+}
+//-----------------------------------------------------------------------------------------
+System::Void FoolGame::MyForm::Player_card_24_Click(System::Object^ sender, System::EventArgs^ e)
+{
+	Player_card_Click(Player_card_24);
+}
+//-----------------------------------------------------------------------------------------
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::Play_Game_Click(System::Object^ sender, System::EventArgs^ e)
@@ -685,27 +754,38 @@ System::Void FoolGame::MyForm::Play_Game_Click(System::Object^ sender, System::E
 //-----------------------------------------------------------------------------------------
 System::Void FoolGame::MyForm::finished_or_take_cards_button_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	if (!players_current_turn)
+	if (!players_current_attack)
 		return;
 
 	// if player want to finished current round
 	if (players_attack)
 	{
+		if ((cards_in_battleground.size() == 0) || (cards_in_battleground.size() % 2 == 1))
+			return;
+
 		players_attack = false;
-		players_current_turn = false;
+		players_current_attack = false;
 
 		finished_round();
 	}
 	//  if player want to take cards
 	else
 	{
+		if ((cards_in_battleground.size() == 0) || (cards_in_battleground.size() % 2 == 0))
+			return;
+
 		players_attack = false;
-		players_current_turn = false;
+		players_current_attack = false;
+
+		Label->Text = L" FINISHED. YOU TAKE CARDS  ";
+		Label->Refresh();
+		// pause
+		Sleep(500);
 
 		move_cards_from_battleground_field(true);
+		computer_intelligence();
 	}
-
-	computer_intelligence();
+	return;
 }
 //-----------------------------------------------------------------------------------------
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -765,18 +845,15 @@ void FoolGame::MyForm::random_distribution_of_cards()
 			String^ way_to_card;
 			if (card_methods::load_card_image(all_cards[rand_index], way_to_card))
 			{
-				if (Trupm_card->Image)
-					Trupm_card->Image = nullptr;
-
+				Trupm_card->Image = nullptr;
 				Trupm_card->Image = Image::FromFile(way_to_card);
+				Trupm_card->SendToBack();
 				Trupm_card->Refresh();
 				trump_suit = all_cards[rand_index].first;
 			}
 			// unlikely
 			else
-			{
 				return;
-			}
 		}
 
 		all_cards.erase(all_cards.begin() + rand_index);
@@ -795,19 +872,15 @@ void FoolGame::MyForm::random_distribution_of_cards()
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::determine_the_turn_of_the_move()
 {
-	if (card_methods::get_random_int(1, 10) > 5)
+	if (card_methods::get_random_int(1, 10) % 2 == 0)
 	{
 		players_attack = true;
-		players_current_turn = true;
-		this->Label->Text = L"     YOUR MOVE   ";
-		Label->Refresh();
+		players_current_attack = true;
 	}
 	else
 	{
 		players_attack = false;
-		players_current_turn = false;
-		Label->Text = L"  OPPONENT'S MOVE  ";
-		Label->Refresh();
+		players_current_attack = false;
 	}
 }
 //-----------------------------------------------------------------------------------------
@@ -823,6 +896,7 @@ bool FoolGame::MyForm::get_card_from_desc(std::pair<card_methods::card_suit, int
 	if (desc_cards.size() == 1)
 	{
 		Cards_in_the_desk->Image = nullptr;
+		Trupm_card->BringToFront();
 		Cards_in_the_desk->Refresh();
 		return true;
 	}
@@ -833,7 +907,6 @@ bool FoolGame::MyForm::get_card_from_desc(std::pair<card_methods::card_suit, int
 		Cards_in_the_desk->Refresh();
 
 		Trupm_card->Image = nullptr;
-		Trupm_card->Refresh();
 
 		switch (card.first)
 		{
@@ -851,6 +924,7 @@ bool FoolGame::MyForm::get_card_from_desc(std::pair<card_methods::card_suit, int
 			break;
 		}
 
+		Trupm_card->BringToFront();
 		Trupm_card->Refresh();
 
 		return true;		
@@ -893,8 +967,10 @@ void FoolGame::MyForm::clear_all()
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::finished_round()
 {
-	Label->Text = L"  FINISHED  ";
+	Label->Text = L" FINISHED  ";
 	Label->Refresh();
+	// pause
+	Sleep(500);
 
 	for (const auto& card : cards_in_battleground)
 	{
@@ -923,10 +999,6 @@ void FoolGame::MyForm::finished_round()
 		give_cards_to_the_computer();
 	}
 
-	// pause
-	Sleep(1000);
-
-
 	/*if (desc_cards.empty() && player_cards_in_storage.size() == 0 && computer_cards_in_storage.size() != 0)
 	{
 		this->Label->Text = L"     YOU WIN!   ";
@@ -941,13 +1013,12 @@ void FoolGame::MyForm::finished_round()
 
 
 	if (players_attack)
-		Label->Text = L"     YOUR MOVE   ";
+		Label->Text = L" YOUR ATTACK   ";
 	else
-		Label->Text = L"  OPPONENT'S MOVE  ";
-
+		Label->Text = L" COMPUTER ATTACKS  ";
 	Label->Refresh();
 
-	debugFunc__show_cards();
+	computer_intelligence();
 }
 //-----------------------------------------------------------------------------------------
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -1018,6 +1089,18 @@ bool FoolGame::MyForm::place_player_card_in_storage(const std::pair<card_methods
 	case 19:
 		card_place_in_storage = Player_card_20;
 		break;
+	case 20:
+		card_place_in_storage = Player_card_21;
+		break;
+	case 21:
+		card_place_in_storage = Player_card_22;
+		break;
+	case 22:
+		card_place_in_storage = Player_card_23;
+		break;
+	case 23:
+		card_place_in_storage = Player_card_24;
+		break;
 	default: 
 		return false;
 	}
@@ -1043,24 +1126,18 @@ bool FoolGame::MyForm::place_player_card_in_storage(const std::pair<card_methods
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::give_cards_to_the_player()
 {
+	if (player_cards_in_storage.size() >= 6)
+		return;
+
 	while (player_cards_in_storage.size() < 6)
 	{
 		std::pair<card_methods::card_suit, int> player_card;
 
 		if (get_card_from_desc(player_card))
-		{
-			//if (!place_player_card_in_storage(player_card))
-			//	return;
 			player_cards_in_storage.push_back(player_card);
-		}
 		else
 			break;
-
-		Sleep(200);
 	}
-
-	if (player_cards_in_storage.size() < 2)
-		return;
 
 	update_player_cards();
 }
@@ -1077,10 +1154,7 @@ void FoolGame::MyForm::update_player_cards()
 	player_cards_in_storage.clear();
 
 	for (const auto& card : player_cards_temp)
-	{
 		place_player_card_in_storage(card);
-	}
-
 }
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::clear_player_card_field()
@@ -1105,6 +1179,11 @@ void FoolGame::MyForm::clear_player_card_field()
 	Player_card_18->Image = nullptr; Player_card_18->ResetText(); Player_card_18->Refresh();
 	Player_card_19->Image = nullptr; Player_card_19->ResetText(); Player_card_19->Refresh();
 	Player_card_20->Image = nullptr; Player_card_20->ResetText(); Player_card_20->Refresh();
+	Player_card_21->Image = nullptr; Player_card_21->ResetText(); Player_card_21->Refresh();
+	Player_card_22->Image = nullptr; Player_card_22->ResetText(); Player_card_22->Refresh();
+	Player_card_23->Image = nullptr; Player_card_23->ResetText(); Player_card_23->Refresh();
+	Player_card_24->Image = nullptr; Player_card_24->ResetText(); Player_card_24->Refresh();
+
 }
 //-----------------------------------------------------------------------------------------
 bool FoolGame::MyForm::determine_right_card(const std::pair<card_methods::card_suit, int>& card)
@@ -1183,28 +1262,32 @@ void FoolGame::MyForm::give_cards_to_the_computer()
 			break;
 	}
 
-	card_methods::sort_cards(computer_cards_in_storage, trump_suit);
+	update_computer_cards();
 }
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::computer_intelligence()
 {
-	debugFunc__show_cards();
-
-	Sleep(1000);
-
-	if (players_current_turn)
+	if (players_current_attack)
+	{
+		Label->Text = L" YOU ATTACK   ";
+		Label->Refresh();
 		return;
+	}
 
 	if (!players_attack)
 	{
+		Label->Text = L" COMPUTER ATTACKS   ";
+		Label->Refresh();
+		Sleep(500);
 		computer_attacks();
 	}
 	else
 	{
+		Label->Text = L" COMPUTER PROTECTS   ";
+		Label->Refresh();
+		Sleep(500);
 		computer_protects();
 	}
-
-	debugFunc__show_cards();
 }
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::computer_attacks()
@@ -1212,37 +1295,36 @@ void FoolGame::MyForm::computer_attacks()
 	if (cards_in_battleground.size() == 0)
 		give_cards_to_the_computer();  // if necessary
 
+
+	if (computer_cards_in_storage.size() == 0 && desc_cards.empty() && player_cards_in_storage.size() != 0)
+	{
+		Label->Text = L" YOU LOSE !!!   ";
+		Label->Refresh();
+		return;
+	}
+
 	std::pair<card_methods::card_suit, int> card_to_attack;
 
 	if (!find_card_to_attack(card_to_attack))
 	{
 		// now player's turn
-		players_current_turn = true;
+		players_current_attack = true;
 		players_attack = true;
 
 		//finished
 		finished_round();	
-
 		return;
 	}
 	else
 	{
+		// now player's turn
+		players_current_attack = true;
+
 		if (!move_card_in_battleground_field(card_to_attack, false))
-		{
-			// unlikely
-			
-			// now player's turn
-			players_current_turn = true;
-			players_attack = true;
-
-			//finished
-			finished_round();
 			return;
-		}
 
-		Label->Text = L"     YOUR MOVE   ";
+		Label->Text = L" YOU PROTECT   ";
 		Label->Refresh();
-		players_current_turn = true;
 
 		return;
 	}
@@ -1301,14 +1383,13 @@ void FoolGame::MyForm::computer_protects()
 	// the card to be hit
 	std::pair<card_methods::card_suit, int> last_card = cards_in_battleground.back();
 
-	// the best card to fight back
+	// determine the best card to fight back
 	std::pair<card_methods::card_suit, int> best_card;
 	int max_diff = 100;
 
 	for (const auto& card : computer_cards_in_storage)
 	{
 		int value_diff = card_comparison(card, last_card);
-
 		if (value_diff > 0)
 		{
 			if (value_diff < max_diff)
@@ -1326,42 +1407,69 @@ void FoolGame::MyForm::computer_protects()
 		// computer takes the cards
 		move_cards_from_battleground_field(false);
 
+		Label->Text = L" FINISHED. OPPONENT TAKE CARDS";
+		Label->Refresh();
+
 		// now player's turn again because computer takes the cards
-		players_current_turn = true;
+		players_current_attack = true;
 		players_attack = true;
 
-
-		Label->Text = L"  FINISHED.OPPONENT TAKE CARDS";
-		Label->Refresh();
-
-		// pause
-		Sleep(1000);
+		// now there is player's turn and if it's necessary player gets cards
 		give_cards_to_the_player();
-
-
-		Label->Text = L"     YOUR MOVE   ";
-		Label->Refresh();
-
-		debugFunc__show_cards();
-
-		return;
 	}
 	else
 	{
 		if (!move_card_in_battleground_field(best_card, false))
 			return;
 
-
-		debugFunc__show_cards();
-
-		players_current_turn = true;
+		players_current_attack = true;
 	}
+
+	// if there is the end of the match and player has no cards - player win
+	if (player_cards_in_storage.size() == 0 && desc_cards.empty() && computer_cards_in_storage.size() != 0)
+	{
+		Label->Text = L" YOU WIN !!!";
+		Label->Refresh();
+		return;
+	}
+
+	// if there is the end of the match and player has no cards - player win
+	if (player_cards_in_storage.size() != 0 && desc_cards.empty() && computer_cards_in_storage.size() == 0)
+	{
+		Label->Text = L" YOU LOSE !!!";
+		Label->Refresh();
+		return;
+	}
+
+
+
+	Label->Text = L" YOU ATTACK   ";
+	Label->Refresh();
+
+}
+//-----------------------------------------------------------------------------------------
+void FoolGame::MyForm::update_computer_cards()
+{
+	if (computer_cards_in_storage.size() == 0)
+	{
+		Computer_player_cards->Image = nullptr;
+		Computer_player_cards->Refresh();
+		return;
+	}
+	else
+	{
+		Computer_player_cards->Image = Image::FromFile("cards_images/Card_back.PNG");
+		Computer_player_cards->Refresh();
+	}
+
+	card_methods::sort_cards(computer_cards_in_storage, trump_suit);
+
+	debugFunc__show_cards();
 }
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::debugFunc__show_cards()
 {
 	Label2->ResetText();
-
 
 	String^ str12;
 	for (const auto& c : computer_cards_in_storage)
@@ -1458,7 +1566,10 @@ bool FoolGame::MyForm::move_card_in_battleground_field(const std::pair<card_meth
 	{
 		auto it = std::find(player_cards_in_storage.begin(), player_cards_in_storage.end(), card);
 		if (it != player_cards_in_storage.end())
+		{
 			player_cards_in_storage.erase(it);
+			update_player_cards();
+		}
 		else
 			return false;
 	}
@@ -1466,7 +1577,10 @@ bool FoolGame::MyForm::move_card_in_battleground_field(const std::pair<card_meth
 	{
 		auto it = std::find(computer_cards_in_storage.begin(), computer_cards_in_storage.end(), card);
 		if (it != computer_cards_in_storage.end())
+		{
 			computer_cards_in_storage.erase(it);
+			update_computer_cards();
+		}
 		else
 			return false;
 	}
@@ -1475,7 +1589,29 @@ bool FoolGame::MyForm::move_card_in_battleground_field(const std::pair<card_meth
 	cards_in_battleground.push_back(card);
 	card_place_in_battleground->Image = Image::FromFile(way_to_card);
 	card_place_in_battleground->Text = card_indx;
+
+	card_place_in_battleground->BringToFront();
+
 	card_place_in_battleground->Refresh();
+
+	if (cards_in_battleground.size() == 12)
+	{
+		// if the player attacked
+		if (players_attack)
+		{
+			players_attack = false;
+			players_current_attack = false;
+		}
+		// if the computer attacked
+		else
+		{
+			players_attack = true;
+			players_current_attack = true;
+		}
+
+		finished_round();
+		return false;
+	}
 
 	return true;
 }
@@ -1496,7 +1632,7 @@ void FoolGame::MyForm::move_cards_from_battleground_field(const bool& is_players
 		for (const auto& card : cards_in_battleground)
 			computer_cards_in_storage.push_back(card);
 
-		card_methods::sort_cards(computer_cards_in_storage, trump_suit);
+		update_computer_cards();
 	}
 
 	cards_in_battleground.clear();
