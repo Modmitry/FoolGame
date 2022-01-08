@@ -6,6 +6,7 @@
 std::stack<std::pair<card_methods::card_suit,int>> desc_cards;
 card_methods::card_suit trump_suit;
 std::vector<std::pair<card_methods::card_suit, int>> broken_cards;
+int m_wins, m_draws, m_loses; // for match history
 //
 
 // members for player
@@ -161,6 +162,8 @@ namespace FoolGame {
 	bool get_card_from_desc(std::pair<card_methods::card_suit, int>& card);
 	void clear_all();  // if you want to restart game
 	void finished_round(); // if computer or player want to end current round
+	void show_match_history();
+	void write_match_history();
 	//
 
 	// methods for player

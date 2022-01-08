@@ -8,6 +8,9 @@
 #include <vector>
 #include <stack>
 #include <stdlib.h>
+#include <iostream>
+#include <fstream>
+#include <string>
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -35,5 +38,8 @@ public:
 	static bool card_by_index(std::pair<card_suit, int>& card,String^% indx);
 	static int get_random_int(const int& left_bound, const int& right_bound);
 	static void sort_cards(std::vector<std::pair<card_suit, int>>& cards, const card_suit& trump);
+	static bool get_match_history_from_file(int& wins, int& draws, int& loses);
+	static void write_match_history(const int& wins, const int& draws, const int& loses);
+
 };
 

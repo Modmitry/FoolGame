@@ -175,6 +175,9 @@
     <Image Include="cards_images\Q_hearts.PNG" />
     <Image Include="cards_images\Q_spades.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="match_history.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

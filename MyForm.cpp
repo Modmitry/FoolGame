@@ -436,7 +436,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	// Label2
 	// 
 	this->Label2->AutoSize = true;
-	this->Label2->Location = System::Drawing::Point(972, 45);
+	this->Label2->Location = System::Drawing::Point(951, 12);
 	this->Label2->Name = L"Label2";
 	this->Label2->Size = System::Drawing::Size(0, 13);
 	this->Label2->TabIndex = 40;
@@ -572,6 +572,7 @@ void FoolGame::MyForm::InitializeComponent(void)
 	this->ResumeLayout(false);
 	this->PerformLayout();
 
+	show_match_history();
 }
 //-----------------------------------------------------------------------------------------
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -780,7 +781,7 @@ System::Void FoolGame::MyForm::finished_or_take_cards_button_Click(System::Objec
 		Label->Text = L" FINISHED. YOU TAKE CARDS  ";
 		Label->Refresh();
 		// pause
-		Sleep(500);
+		Sleep(300);
 
 		move_cards_from_battleground_field(true);
 		computer_intelligence();
@@ -831,7 +832,6 @@ void FoolGame::MyForm::random_distribution_of_cards()
 	{card_methods::card_suit::spades,14}
 	};
 
-
 	int number_of_cards = all_cards.size()-1;
 
 	while (number_of_cards >= 0)
@@ -865,7 +865,6 @@ void FoolGame::MyForm::random_distribution_of_cards()
 	Cards_in_the_desk->Image->RotateFlip(RotateFlipType::Rotate90FlipX);
 	Cards_in_the_desk->Refresh();
 
-
 	Computer_player_cards->Image = Image::FromFile("cards_images/Card_back.PNG");
 	Computer_player_cards->Refresh();
 }
@@ -896,8 +895,9 @@ bool FoolGame::MyForm::get_card_from_desc(std::pair<card_methods::card_suit, int
 	if (desc_cards.size() == 1)
 	{
 		Cards_in_the_desk->Image = nullptr;
-		Trupm_card->BringToFront();
 		Cards_in_the_desk->Refresh();
+		Trupm_card->BringToFront();
+		Trupm_card->Refresh();
 		return true;
 	}
 
@@ -970,7 +970,7 @@ void FoolGame::MyForm::finished_round()
 	Label->Text = L" FINISHED  ";
 	Label->Refresh();
 	// pause
-	Sleep(500);
+	Sleep(300);
 
 	for (const auto& card : cards_in_battleground)
 	{
@@ -980,7 +980,12 @@ void FoolGame::MyForm::finished_round()
 	cards_in_battleground.clear();
 	clear_battleground_field();
 
-	if (!Broken_card->Image)
+
+	Broken_card->Image = nullptr;
+	Broken_card->Refresh();
+	Sleep(60);
+
+	if (!broken_cards.empty())
 	{
 		Broken_card->Image = Image::FromFile("cards_images/Card_back.PNG");
 		Broken_card->Image->RotateFlip(RotateFlipType::Rotate90FlipX);
@@ -1019,6 +1024,28 @@ void FoolGame::MyForm::finished_round()
 	Label->Refresh();
 
 	computer_intelligence();
+}
+//-----------------------------------------------------------------------------------------
+void FoolGame::MyForm::show_match_history()
+{
+	if (card_methods::get_match_history_from_file(m_wins, m_draws, m_loses))
+	{	
+		String^ winsStr = gcnew String(std::to_string(m_wins).c_str());
+		String^ drawsStr = gcnew String(std::to_string(m_draws).c_str());
+		String^ losesStr = gcnew String(std::to_string(m_loses).c_str());
+
+		Label2->Text = L" MATCHES HISTORY \n WINS: "+ winsStr+ L"\n DRAWS: "+ drawsStr+ L"\n LOSES: "+ losesStr;
+		Label2->Refresh();
+	}
+}
+//-----------------------------------------------------------------------------------------
+void FoolGame::MyForm::write_match_history()
+{
+	card_methods::write_match_history(m_wins, m_draws, m_loses);
+	m_wins = 0;
+	m_draws = 0;
+	m_loses = 0;
+	show_match_history();
 }
 //-----------------------------------------------------------------------------------------
 //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
@@ -1278,14 +1305,14 @@ void FoolGame::MyForm::computer_intelligence()
 	{
 		Label->Text = L" COMPUTER ATTACKS   ";
 		Label->Refresh();
-		Sleep(500);
+		Sleep(300);
 		computer_attacks();
 	}
 	else
 	{
 		Label->Text = L" COMPUTER PROTECTS   ";
 		Label->Refresh();
-		Sleep(500);
+		Sleep(300);
 		computer_protects();
 	}
 }
@@ -1300,6 +1327,9 @@ void FoolGame::MyForm::computer_attacks()
 	{
 		Label->Text = L" YOU LOSE !!!   ";
 		Label->Refresh();
+
+		m_loses += 1;
+		write_match_history();
 		return;
 	}
 
@@ -1409,6 +1439,7 @@ void FoolGame::MyForm::computer_protects()
 
 		Label->Text = L" FINISHED. OPPONENT TAKE CARDS";
 		Label->Refresh();
+		Sleep(300);
 
 		// now player's turn again because computer takes the cards
 		players_current_attack = true;
@@ -1430,6 +1461,9 @@ void FoolGame::MyForm::computer_protects()
 	{
 		Label->Text = L" YOU WIN !!!";
 		Label->Refresh();
+
+		m_wins += 1;
+		write_match_history();
 		return;
 	}
 
@@ -1438,6 +1472,9 @@ void FoolGame::MyForm::computer_protects()
 	{
 		Label->Text = L" YOU LOSE !!!";
 		Label->Refresh();
+
+		m_loses += 1;
+		write_match_history();
 		return;
 	}
 
@@ -1445,25 +1482,22 @@ void FoolGame::MyForm::computer_protects()
 
 	Label->Text = L" YOU ATTACK   ";
 	Label->Refresh();
-
 }
 //-----------------------------------------------------------------------------------------
 void FoolGame::MyForm::update_computer_cards()
 {
-	if (computer_cards_in_storage.size() == 0)
-	{
-		Computer_player_cards->Image = nullptr;
-		Computer_player_cards->Refresh();
-		return;
-	}
-	else
+	Computer_player_cards->Image = nullptr;
+	Computer_player_cards->Refresh();
+	Sleep(60);
+
+	if (computer_cards_in_storage.size() != 0)
 	{
 		Computer_player_cards->Image = Image::FromFile("cards_images/Card_back.PNG");
 		Computer_player_cards->Refresh();
 	}
 
 	card_methods::sort_cards(computer_cards_in_storage, trump_suit);
-
+	
 	debugFunc__show_cards();
 }
 //-----------------------------------------------------------------------------------------
@@ -1589,13 +1623,13 @@ bool FoolGame::MyForm::move_card_in_battleground_field(const std::pair<card_meth
 	cards_in_battleground.push_back(card);
 	card_place_in_battleground->Image = Image::FromFile(way_to_card);
 	card_place_in_battleground->Text = card_indx;
-
 	card_place_in_battleground->BringToFront();
-
 	card_place_in_battleground->Refresh();
+
 
 	if (cards_in_battleground.size() == 12)
 	{
+		Sleep(300);
 		// if the player attacked
 		if (players_attack)
 		{
@@ -1610,6 +1644,15 @@ bool FoolGame::MyForm::move_card_in_battleground_field(const std::pair<card_meth
 		}
 
 		finished_round();
+		return false;
+	}
+	else if (computer_cards_in_storage.empty() && player_cards_in_storage.empty() && desc_cards.empty())
+	{
+		Label->Text = L" DRAW !!!";
+		Label->Refresh();
+
+		m_draws += 1;
+		write_match_history();
 		return false;
 	}
 

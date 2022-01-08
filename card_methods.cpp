@@ -621,4 +621,49 @@ void card_methods::sort_cards(std::vector<std::pair<card_suit, int>>& cards, con
 	});
 }
 //-----------------------------------------------------------------------------------------
+bool card_methods::get_match_history_from_file(int& wins, int& draws, int& loses)
+{
+	std::string str;
+	std::ifstream in("match_history.txt"); // open file for reading
+
+	try 
+	{
+		if (in.is_open())
+		{
+			// get number of wins
+			getline(in, str);
+			wins = stoi(str);
+
+			// get number of draws
+			getline(in, str);
+			draws = stoi(str);
+
+			// get number of loses
+			getline(in, str);
+			loses = stoi(str);
+		}
+		else
+			return false;
+	}
+	catch (std::invalid_argument ex) 
+	{
+		return false;
+	}
+
+	return true;
+}
+//-----------------------------------------------------------------------------------------
+void card_methods::write_match_history(const int& wins, const int& draws, const int& loses)
+{
+	std::ofstream out;         
+	out.open("match_history.txt"); // open file for writing
+
+	if (out.is_open())
+	{
+		out << std::to_string(wins) << std::endl;
+		out << std::to_string(draws) << std::endl;
+		out << std::to_string(loses) << std::endl;
+	}
+}
+//-----------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------
